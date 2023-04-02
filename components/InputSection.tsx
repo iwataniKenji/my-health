@@ -4,7 +4,7 @@ import { StyleSheet, View, Text, TextInput } from "react-native";
 export function InputSection() {
   const [email, onChangeEmail] = useState("");
   const [password, onChangePassword] = useState("");
-  const [isValid, setIsValid] = useState(false);
+  const [isValid, setIsValid] = useState(false); // TODO -> substituir por validação
 
   return (
     <View>
@@ -41,6 +41,7 @@ const styles = StyleSheet.create({
 
   inputText: {
     fontSize: 16,
+    fontFamily: "averiaLibre-regular",
   },
 
   input: {
@@ -50,10 +51,12 @@ const styles = StyleSheet.create({
     padding: 10,
     width: "80%",
     backgroundColor: "#fff",
+    fontFamily: "averiaLibre-regular",
   },
 
   invalidInput: {
     color: "red",
     marginLeft: 60,
+    fontFamily: "averiaLibre-regular",
   },
 });

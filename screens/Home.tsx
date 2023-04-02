@@ -1,7 +1,7 @@
-import { StyleSheet, View, Text, TextInput } from "react-native";
+import { StyleSheet, View, Text } from "react-native";
 import { StatusBar } from "expo-status-bar";
-import { ButtonSection } from "./ButtonSection";
-import { InputSection } from "./InputSection";
+import { ButtonSection } from "../components/ButtonSection";
+import { InputSection } from "../components/InputSection";
 
 export function Home() {
   return (
@@ -34,11 +34,13 @@ const styles = StyleSheet.create({
   appTitle: {
     fontSize: 48,
     marginTop: 40,
+    fontFamily: "averiaLibre-regular",
   },
 
   appDescription: {
     fontSize: 28,
     marginTop: 20,
     textAlign: "center",
+    fontFamily: "averiaLibre-regular",
   },
 });

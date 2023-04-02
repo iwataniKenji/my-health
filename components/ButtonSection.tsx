@@ -47,6 +47,7 @@ const styles = StyleSheet.create({
 
   buttonText: {
     color: "#fff",
+    fontFamily: "averiaLibre-regular",
   },
 
   loginButton: {
