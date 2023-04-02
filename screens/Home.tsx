@@ -35,6 +35,8 @@ const styles = StyleSheet.create({
     fontSize: 48,
     marginTop: 40,
     fontFamily: "averiaLibre-regular",
+    color: "rgba(65, 158, 215, 1)",
+    textDecorationLine: "underline",
   },
 
   appDescription: {
@@ -42,5 +44,6 @@ const styles = StyleSheet.create({
     marginTop: 20,
     textAlign: "center",
     fontFamily: "averiaLibre-regular",
+    color: "rgba(65, 158, 215, 1)",
   },
 });

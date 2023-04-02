@@ -52,11 +52,12 @@ const styles = StyleSheet.create({
     width: "80%",
     backgroundColor: "#fff",
     fontFamily: "averiaLibre-regular",
+    color: "rgba(65, 158, 215, 1)",
   },
 
   invalidInput: {
-    color: "red",
     marginLeft: 60,
     fontFamily: "averiaLibre-regular",
+    color: "rgba(253, 121, 121, 1)",
   },
 });
