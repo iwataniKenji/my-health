@@ -6,11 +6,12 @@ export function InputSection() {
   const [email, onChangeEmail] = useState("");
   const [password, onChangePassword] = useState("");
   const [isValid, setIsValid] = useState(false); // TODO -> substituir por validação
+  const [isLoading, setIsLoading] = useState(false); // TODO -> substituir loading
 
   return (
     <View>
       {/* LOADING */}
-      <ActivityIndicator animating={true} color={MD2Colors.red800} />
+      <ActivityIndicator animating={isLoading} color={MD2Colors.red800} />
 
       <View style={styles.inputBox}>
         <Text style={styles.inputText}>E-mail</Text>
