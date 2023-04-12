@@ -1,5 +1,6 @@
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { Searchbar } from "../components/Searchbar";
+import { CardsSection } from "../components/CardsSection";
 
 export function MyVaccinesSection() {
   const openMenu = () => {
@@ -16,6 +17,10 @@ export function MyVaccinesSection() {
       </View>
       <View style={styles.content}>
         <Searchbar />
+        <CardsSection />
+        <TouchableOpacity style={styles.newVaccineButton} onPress={openMenu}>
+          <Text style={styles.buttonText}>Nova vacina</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -46,7 +51,20 @@ const styles = StyleSheet.create({
   content: {
     display: "flex",
     alignItems: "center",
+    gap: 30,
     marginTop: 30,
     marginHorizontal: "auto",
+  },
+
+  buttonText: {
+    color: "#fff",
+    fontFamily: "averiaLibre-regular",
+  },
+
+  newVaccineButton: {
+    backgroundColor: "rgba(55, 189, 109, 1)",
+    paddingHorizontal: 30,
+    paddingVertical: 10,
+    borderRadius: 2,
   },
 });
