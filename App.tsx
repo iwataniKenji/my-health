@@ -1,5 +1,5 @@
-import { Home } from "./screens/Home";
 import { useState } from "react";
+import { MyVaccinesSection } from './screens/MyVaccinesSection';
 import AppLoading from "expo-app-loading";
 import * as Font from "expo-font";
 
@@ -12,7 +12,7 @@ export default function App() {
   const [fontsLoaded, setFontsLoaded] = useState(false);
 
   if (fontsLoaded) {
-    return <Home />;
+    return <MyVaccinesSection />;
   } else {
     return (
       <AppLoading

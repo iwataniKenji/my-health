@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { StyleSheet, View, Text, TextInput } from "react-native";
+import { ActivityIndicator, MD2Colors } from "react-native-paper";
 
 export function InputSection() {
   const [email, onChangeEmail] = useState("");
@@ -8,6 +9,9 @@ export function InputSection() {
 
   return (
     <View>
+      {/* LOADING */}
+      <ActivityIndicator animating={true} color={MD2Colors.red800} />
+
       <View style={styles.inputBox}>
         <Text style={styles.inputText}>E-mail</Text>
         <TextInput
