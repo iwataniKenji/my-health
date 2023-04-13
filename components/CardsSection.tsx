@@ -18,6 +18,7 @@ export function CardsSection() {
 const styles = StyleSheet.create({
   grid: {
     display: "flex",
+    flexDirection: "row",
     gap: 10,
   },
 });

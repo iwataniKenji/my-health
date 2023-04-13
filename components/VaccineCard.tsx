@@ -30,16 +30,17 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 10,
     backgroundColor: "white",
+    width: "45%",
   },
 
   title: {
-    fontSize: 24,
+    fontSize: 22,
     fontFamily: "averiaLibre-regular",
     color: "rgba(63, 146, 197, 1)",
   },
 
   about: {
-    fontSize: 16,
+    fontSize: 12,
     paddingVertical: 2,
     paddingHorizontal: 10,
     fontFamily: "averiaLibre-regular",
@@ -48,10 +49,12 @@ const styles = StyleSheet.create({
   },
 
   date: {
+    fontSize: 12,
     color: "rgba(139, 139, 139, 1)",
   },
 
   nextDose: {
+    fontSize: 10,
     color: "rgba(253, 121, 121, 1)",
   },
 });

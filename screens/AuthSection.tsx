@@ -3,7 +3,7 @@ import { StatusBar } from "expo-status-bar";
 import { ButtonSection } from "../components/ButtonSection";
 import { InputSection } from "../components/InputSection";
 
-export function Home() {
+export function AuthSection() {
   return (
     <View style={styles.screen}>
       <Text style={styles.appTitle}>MyHealth</Text>

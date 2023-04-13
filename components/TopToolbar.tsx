@@ -1,6 +1,10 @@
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
-export function TopToolbar() {
+type Props = {
+  title: string;
+};
+
+export function TopToolbar({ title }: Props) {
   const openMenu = () => {
     console.log("open menu");
   };
@@ -10,7 +14,7 @@ export function TopToolbar() {
       <TouchableOpacity onPress={openMenu}>
         <Text style={styles.toolBarButton}>☰</Text>
       </TouchableOpacity>
-      <Text style={styles.toolbarText}>Minhas vacinas</Text>
+      <Text style={styles.toolbarText}>{title}</Text>
     </View>
   );
 }
