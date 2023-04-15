@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { TextInput, View, StyleSheet } from "react-native";
+import { TextInput, View } from "react-native";
 
 export function Searchbar() {
   const [search, onSearch] = useState("");
@@ -7,9 +7,23 @@ export function Searchbar() {
   return (
     <>
       {/* TODO -> adicionar ícone de lupa */}
-      <View style={styles.inputBox}>
+      <View
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          alignItems: "center",
+        }}
+      >
         <TextInput
-          style={styles.input}
+          style={{
+            height: 40,
+            borderRadius: 2,
+            padding: 10,
+            width: "90%",
+            backgroundColor: "#fff",
+            fontFamily: "averiaLibre-regular",
+            color: "rgba(139, 139, 139, 1)",
+          }}
           onChangeText={onSearch}
           value={search}
           placeholder="PESQUISAR VACINA..."
@@ -18,21 +32,3 @@ export function Searchbar() {
     </>
   );
 }
-
-const styles = StyleSheet.create({
-  inputBox: {
-    display: "flex",
-    flexDirection: "row",
-    alignItems: "center",
-  },
-
-  input: {
-    height: 40,
-    borderRadius: 2,
-    padding: 10,
-    width: "90%",
-    backgroundColor: "#fff",
-    fontFamily: "averiaLibre-regular",
-    color: "rgba(139, 139, 139, 1)",
-  },
-});

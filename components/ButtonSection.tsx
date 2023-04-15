@@ -1,4 +1,4 @@
-import { StyleSheet, Alert, View } from "react-native";
+import { Alert, View } from "react-native";
 import { CustomButton } from "./CustomButton";
 
 const sectionButtons = [
@@ -27,7 +27,15 @@ const sectionButtons = [
 
 export function ButtonSection() {
   return (
-    <View style={styles.buttonDiv}>
+    <View
+      style={{
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+        gap: 40,
+        marginTop: 20,
+      }}
+    >
       {sectionButtons.map((button) => (
         <CustomButton color={button.color} handleClick={button.handleClick}>
           {button.text}
@@ -36,13 +44,3 @@ export function ButtonSection() {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  buttonDiv: {
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-    gap: 40,
-    marginTop: 20,
-  },
-});

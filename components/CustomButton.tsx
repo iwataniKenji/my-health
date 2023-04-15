@@ -1,4 +1,4 @@
-import { TouchableOpacity, StyleSheet, Text } from "react-native";
+import { TouchableOpacity, Text } from "react-native";
 
 type Props = {
   children: string;
@@ -9,23 +9,22 @@ type Props = {
 export function CustomButton({ children, color, handleClick }: Props) {
   return (
     <TouchableOpacity
-      style={{ ...styles.buttonContainer, backgroundColor: color }}
+      style={{
+        paddingHorizontal: 30,
+        paddingVertical: 10,
+        borderRadius: 2,
+        backgroundColor: color,
+      }}
       onPress={handleClick}
     >
-      <Text style={styles.buttonText}>{children}</Text>
+      <Text
+        style={{
+          color: "#fff",
+          fontFamily: "averiaLibre-regular",
+        }}
+      >
+        {children}
+      </Text>
     </TouchableOpacity>
   );
 }
-
-const styles = StyleSheet.create({
-  buttonText: {
-    color: "#fff",
-    fontFamily: "averiaLibre-regular",
-  },
-
-  buttonContainer: {
-    paddingHorizontal: 30,
-    paddingVertical: 10,
-    borderRadius: 2,
-  },
-});

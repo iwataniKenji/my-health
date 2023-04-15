@@ -1,4 +1,4 @@
-import { StyleSheet, View } from "react-native";
+import { View } from "react-native";
 import { CustomButton } from "../components/CustomButton";
 import { TopToolbar } from "../components/TopToolbar";
 import { ReactNode } from "react";
@@ -10,9 +10,23 @@ type Props = {
 
 export function MainScreenLayout({ toolbarTitle, children }: Props) {
   return (
-    <View style={styles.screen}>
+    <View
+      style={{
+        height: "100%",
+        display: "flex",
+        backgroundColor: "rgba(173, 212, 208, 1)",
+      }}
+    >
       <TopToolbar title={toolbarTitle} />
-      <View style={styles.content}>
+      <View
+        style={{
+          display: "flex",
+          alignItems: "center",
+          gap: 30,
+          marginTop: 30,
+          marginHorizontal: "auto",
+        }}
+      >
         {children}
         <CustomButton color="rgba(55, 189, 109, 1)" handleClick={() => {}}>
           Nova vacina
@@ -21,19 +35,3 @@ export function MainScreenLayout({ toolbarTitle, children }: Props) {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  screen: {
-    height: "100%",
-    display: "flex",
-    backgroundColor: "rgba(173, 212, 208, 1)",
-  },
-
-  content: {
-    display: "flex",
-    alignItems: "center",
-    gap: 30,
-    marginTop: 30,
-    marginHorizontal: "auto",
-  },
-});

@@ -1,9 +1,15 @@
-import { StyleSheet, View } from "react-native";
+import { View } from "react-native";
 import { VaccineCard } from "./VaccineCard";
 
 export function CardsSection() {
   return (
-    <View style={styles.grid}>
+    <View
+      style={{
+        display: "flex",
+        flexDirection: "row",
+        gap: 10,
+      }}
+    >
       <VaccineCard title="BCG" about="Dose única" date="11/06/2022" />
       <VaccineCard
         title="Febre amarela"
@@ -14,11 +20,3 @@ export function CardsSection() {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  grid: {
-    display: "flex",
-    flexDirection: "row",
-    gap: 10,
-  },
-});

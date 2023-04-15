@@ -1,4 +1,4 @@
-import { StyleSheet, View } from "react-native";
+import { View } from "react-native";
 import { NextVaccinesCard } from "./NextVaccinesCard";
 
 const data = [
@@ -18,19 +18,17 @@ const data = [
 
 export function CardsSection2() {
   return (
-    <View style={styles.container}>
+    <View
+      style={{
+        display: "flex",
+        alignItems: "center",
+        gap: 15,
+        width: "100%",
+      }}
+    >
       {data.map((item) => (
         <NextVaccinesCard title={item.title} date={item.date} />
       ))}
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    display: "flex",
-    alignItems: "center",
-    gap: 15,
-    width: "100%",
-  },
-});
