@@ -3,13 +3,15 @@ import { CustomButton } from "../../components/CustomButton";
 import { colors } from "../../data/theme";
 
 export function AuthSectionButtons(props: any) {
+  const handleLogin = () => {
+    props.navigation.navigate("Drawer");
+  };
+
   const sectionButtons = [
     {
       text: "Entrar",
       color: colors.success,
-      handleClick: () => {
-        props.navigation.navigate("Drawer");
-      },
+      handleClick: handleLogin,
     },
     {
       text: "Criar minha conta",
