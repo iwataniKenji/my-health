@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { TextInput, View } from "react-native";
+import { colors } from "../../data/theme";
 
 export function Searchbar() {
   const [search, onSearch] = useState("");
@@ -20,9 +21,9 @@ export function Searchbar() {
             borderRadius: 2,
             padding: 10,
             width: "90%",
-            backgroundColor: "#fff",
+            backgroundColor: colors.white,
             fontFamily: "averiaLibre-regular",
-            color: "rgba(139, 139, 139, 1)",
+            color: colors.grayDark,
           }}
           onChangeText={onSearch}
           value={search}

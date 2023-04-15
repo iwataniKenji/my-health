@@ -1,6 +1,6 @@
-import { useState } from "react";
 import AppLoading from "expo-app-loading";
-import Navigation from "./screens/Navigation";
+import Navigation from "./components/Navigation";
+import { useState } from "react";
 import * as Font from "expo-font";
 
 const getFonts = () =>

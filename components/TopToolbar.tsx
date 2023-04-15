@@ -1,4 +1,5 @@
 import { Text, TouchableOpacity, View } from "react-native";
+import { colors } from "../data/theme";
 
 type Props = {
   title: string;
@@ -15,17 +16,16 @@ export function TopToolbar({ title }: Props) {
         display: "flex",
         flexDirection: "row",
         justifyContent: "flex-start",
-        paddingTop: 40,
-        paddingBottom: 10,
+        paddingVertical: 10,
         gap: 10,
-        backgroundColor: "rgba(193, 231, 227, 1)",
+        backgroundColor: colors.bgMain,
       }}
     >
       <TouchableOpacity onPress={openMenu}>
         <Text
           style={{
             fontSize: 46,
-            color: "rgba(173, 212, 208, 1)",
+            color: colors.bgDark,
           }}
         >
           ☰
@@ -34,7 +34,7 @@ export function TopToolbar({ title }: Props) {
       <Text
         style={{
           fontSize: 32,
-          color: "rgba(65, 158, 215, 1)",
+          color: colors.primaryMain,
           fontFamily: "averiaLibre-regular",
         }}
       >

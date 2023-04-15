@@ -1,4 +1,5 @@
 import { Text, View } from "react-native";
+import { colors } from "../../data/theme";
 
 type Props = {
   title: string;
@@ -7,7 +8,7 @@ type Props = {
   nextDose?: string;
 };
 
-export function VaccineCard({ title, about, date, nextDose }: Props) {
+export function MyVaccineCard({ title, about, date, nextDose }: Props) {
   const nextDoseText = nextDose
     ? `Próxima dose em: ${nextDose}`
     : "Não há próxima dose";
@@ -28,7 +29,7 @@ export function VaccineCard({ title, about, date, nextDose }: Props) {
         style={{
           fontSize: 22,
           fontFamily: "averiaLibre-regular",
-          color: "rgba(63, 146, 197, 1)",
+          color: colors.primaryDark,
         }}
       >
         {title}
@@ -39,8 +40,8 @@ export function VaccineCard({ title, about, date, nextDose }: Props) {
           paddingVertical: 2,
           paddingHorizontal: 10,
           fontFamily: "averiaLibre-regular",
-          backgroundColor: "rgba(63, 146, 197, 1)",
-          color: "rgba(255, 255, 255, 1)",
+          backgroundColor: colors.primaryDark,
+          color: colors.white,
         }}
       >
         {about}
@@ -48,7 +49,7 @@ export function VaccineCard({ title, about, date, nextDose }: Props) {
       <Text
         style={{
           fontSize: 12,
-          color: "rgba(139, 139, 139, 1)",
+          color: colors.grayDark,
         }}
       >
         {date}
@@ -56,7 +57,7 @@ export function VaccineCard({ title, about, date, nextDose }: Props) {
       <Text
         style={{
           fontSize: 10,
-          color: "rgba(253, 121, 121, 1)",
+          color: colors.error,
         }}
       >
         {nextDoseText}

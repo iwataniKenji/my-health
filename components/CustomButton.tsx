@@ -1,4 +1,5 @@
 import { TouchableOpacity, Text } from "react-native";
+import { colors } from "../data/theme";
 
 type Props = {
   children: string;
@@ -19,7 +20,7 @@ export function CustomButton({ children, color, handleClick }: Props) {
     >
       <Text
         style={{
-          color: "#fff",
+          color: colors.white,
           fontFamily: "averiaLibre-regular",
         }}
       >

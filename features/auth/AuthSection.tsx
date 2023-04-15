@@ -1,9 +1,10 @@
 import { View, Text } from "react-native";
 import { StatusBar } from "expo-status-bar";
-import { ButtonSection } from "../components/ButtonSection";
-import { InputSection } from "../components/InputSection";
+import { AuthSectionButtons } from "./AuthSectionButtons";
+import { AuthSectionInputs } from "./AuthSectionInputs";
+import { colors } from "../../data/theme";
 
-export function AuthSection() {
+export function AuthSection(props: any) {
   return (
     <View
       style={{
@@ -21,7 +22,7 @@ export function AuthSection() {
           fontSize: 48,
           marginTop: 40,
           fontFamily: "averiaLibre-regular",
-          color: "rgba(65, 158, 215, 1)",
+          color: colors.primaryMain,
           textDecorationLine: "underline",
         }}
       >
@@ -33,13 +34,13 @@ export function AuthSection() {
           marginTop: 20,
           textAlign: "center",
           fontFamily: "averiaLibre-regular",
-          color: "rgba(65, 158, 215, 1)",
+          color: colors.primaryMain,
         }}
       >
         Controle as suas vacinas e fique seguro
       </Text>
-      <InputSection />
-      <ButtonSection />
+      <AuthSectionInputs />
+      <AuthSectionButtons {...props} />
       <StatusBar style="auto" />
     </View>
   );

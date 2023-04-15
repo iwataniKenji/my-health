@@ -16,7 +16,7 @@ const data = [
   },
 ];
 
-export function CardsSection2() {
+export function NextVaccinesList() {
   return (
     <View
       style={{

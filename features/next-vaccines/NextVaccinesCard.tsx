@@ -1,4 +1,5 @@
 import { View, Text } from "react-native";
+import { colors } from "../../data/theme";
 
 type Props = {
   title: string;
@@ -20,7 +21,7 @@ export function NextVaccinesCard({ title, date }: Props) {
         style={{
           fontSize: 22,
           fontFamily: "averiaLibre-regular",
-          color: "rgba(63, 146, 197, 1)",
+          color: colors.primaryDark,
         }}
       >
         {title}
@@ -28,7 +29,7 @@ export function NextVaccinesCard({ title, date }: Props) {
       <Text
         style={{
           fontSize: 12,
-          color: "rgba(139, 139, 139, 1)",
+          color: colors.grayDark,
         }}
       >
         {date}

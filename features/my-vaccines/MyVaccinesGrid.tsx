@@ -1,7 +1,7 @@
 import { View } from "react-native";
-import { VaccineCard } from "./VaccineCard";
+import { MyVaccineCard } from "./MyVaccineCard";
 
-export function CardsSection() {
+export function MyVaccinesGrid() {
   return (
     <View
       style={{
@@ -10,8 +10,8 @@ export function CardsSection() {
         gap: 10,
       }}
     >
-      <VaccineCard title="BCG" about="Dose única" date="11/06/2022" />
-      <VaccineCard
+      <MyVaccineCard title="BCG" about="Dose única" date="11/06/2022" />
+      <MyVaccineCard
         title="Febre amarela"
         about="1a. dose"
         date="11/10/2022"

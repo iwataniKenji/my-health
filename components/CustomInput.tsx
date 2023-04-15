@@ -1,4 +1,5 @@
 import { View, Text, TextInput } from "react-native";
+import { colors } from "../data/theme";
 
 type Props = {
   label: string;
@@ -25,9 +26,9 @@ export function CustomInput({ label, value, onChange }: Props) {
           borderRadius: 2,
           padding: 10,
           width: "80%",
-          backgroundColor: "#fff",
+          backgroundColor: colors.white,
           fontFamily: "averiaLibre-regular",
-          color: "rgba(65, 158, 215, 1)",
+          color: colors.primaryMain,
         }}
         onChangeText={onChange}
         value={value}

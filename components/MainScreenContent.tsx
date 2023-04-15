@@ -1,20 +1,26 @@
 import { View } from "react-native";
-import { CustomButton } from "../components/CustomButton";
-import { TopToolbar } from "../components/TopToolbar";
+import { CustomButton } from "./CustomButton";
+import { TopToolbar } from "./TopToolbar";
 import { ReactNode } from "react";
+import { colors } from "../data/theme";
 
 type Props = {
   toolbarTitle: string;
   children: ReactNode;
+  props: any;
 };
 
-export function MainScreenLayout({ toolbarTitle, children }: Props) {
+export function MainScreenContent({ toolbarTitle, children, props }: Props) {
+  const returnToAuth = () => {
+    props.navigation.popToTop();
+  };
+
   return (
     <View
       style={{
         height: "100%",
         display: "flex",
-        backgroundColor: "rgba(173, 212, 208, 1)",
+        backgroundColor: colors.bgDark,
       }}
     >
       <TopToolbar title={toolbarTitle} />
@@ -28,7 +34,7 @@ export function MainScreenLayout({ toolbarTitle, children }: Props) {
         }}
       >
         {children}
-        <CustomButton color="rgba(55, 189, 109, 1)" handleClick={() => {}}>
+        <CustomButton color={colors.success} handleClick={returnToAuth}>
           Nova vacina
         </CustomButton>
       </View>

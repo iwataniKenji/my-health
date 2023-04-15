@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { View, Text } from "react-native";
 import { ActivityIndicator, MD2Colors } from "react-native-paper";
-import { CustomInput } from "./CustomInput";
+import { CustomInput } from "../../components/CustomInput";
+import { colors } from "../../data/theme";
 
-export function InputSection() {
+export function AuthSectionInputs() {
   const [email, onChangeEmail] = useState("");
   const [password, onChangePassword] = useState("");
   const [isValid, setIsValid] = useState(false); // TODO -> substituir por validação
@@ -22,7 +23,7 @@ export function InputSection() {
           style={{
             marginLeft: 60,
             fontFamily: "averiaLibre-regular",
-            color: "rgba(253, 121, 121, 1)",
+            color: colors.error,
           }}
         >
           E-mail e/ou senha inválidos.
