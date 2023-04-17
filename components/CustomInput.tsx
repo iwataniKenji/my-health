@@ -1,13 +1,13 @@
-import { View, Text, TextInput } from "react-native";
+import { View, Text, TextInput, TextInputProps } from "react-native";
 import { colors } from "../data/theme";
 
-type Props = {
+type Props = TextInputProps & {
   label: string;
   value: string;
-  onChange: (value: string) => void;
+  onChangeText: (value: string) => void;
 };
 
-export function CustomInput({ label, value, onChange }: Props) {
+export function CustomInput({ label, value, onChangeText, ...rest }: Props) {
   return (
     <View
       style={{
@@ -16,7 +16,13 @@ export function CustomInput({ label, value, onChange }: Props) {
         alignItems: "center",
       }}
     >
-      <Text style={{ fontSize: 16, fontFamily: "averiaLibre-regular" }}>
+      <Text
+        style={{
+          fontSize: 16,
+          fontFamily: "averiaLibre-regular",
+          width: "20%",
+        }}
+      >
         {label}
       </Text>
       <TextInput
@@ -25,13 +31,14 @@ export function CustomInput({ label, value, onChange }: Props) {
           margin: 12,
           borderRadius: 2,
           padding: 10,
-          width: "80%",
+          width: "75%",
           backgroundColor: colors.white,
           fontFamily: "averiaLibre-regular",
           color: colors.primaryMain,
         }}
-        onChangeText={onChange}
+        onChangeText={onChangeText}
         value={value}
+        {...rest}
       />
     </View>
   );

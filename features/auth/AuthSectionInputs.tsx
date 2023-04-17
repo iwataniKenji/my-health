@@ -15,8 +15,13 @@ export function AuthSectionInputs() {
       {/* LOADING */}
       <ActivityIndicator animating={isLoading} color={MD2Colors.red800} />
 
-      <CustomInput label="E-mail" value={email} onChange={onChangeEmail} />
-      <CustomInput label="Senha" value={password} onChange={onChangePassword} />
+      <CustomInput label="E-mail" value={email} onChangeText={onChangeEmail} />
+      <CustomInput
+        label="Senha"
+        value={password}
+        onChangeText={onChangePassword}
+        secureTextEntry
+      />
 
       {!isValid && (
         <Text

@@ -8,8 +8,19 @@ export function ResetPasswordSection(props: any) {
 
   return (
     <MainScreenContent toolbarTitle="My Health" {...props}>
-      <View style={{ paddingTop: 200 }}>
-        <CustomInput label="E-mail" value={email} onChange={onChangeEmail} />
+      <View
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          paddingHorizontal: 20,
+          height: 400,
+        }}
+      >
+        <CustomInput
+          label="E-mail"
+          value={email}
+          onChangeText={onChangeEmail}
+        />
       </View>
     </MainScreenContent>
   );
