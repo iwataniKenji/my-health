@@ -4,6 +4,7 @@ import { NextVaccinesSection } from "../../features/next-vaccines/NextVaccinesSe
 import { DrawerContent } from "./DrawerContent";
 import { ResetPasswordSection } from "../../features/reset-password/ResetPasswordSection";
 import { SignupSection } from "../../features/signup/SignupSection";
+import { CreateNewVaccineSection } from "../../features/create-new-vaccine/CreateNewVaccineSecion";
 
 const Drawer = createDrawerNavigator();
 
@@ -14,6 +15,7 @@ export function DrawerComponent() {
       <Drawer.Screen name="Próximas vacinas" component={NextVaccinesSection} />
       <Drawer.Screen name="Password" component={ResetPasswordSection} />
       <Drawer.Screen name="Cadastro" component={SignupSection} />
+      <Drawer.Screen name="Criar vacina" component={CreateNewVaccineSection} />
     </Drawer.Navigator>
   );
 }
