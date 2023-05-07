@@ -5,6 +5,7 @@ import { AuthSectionInputs } from "./AuthSectionInputs";
 import { colors } from "../../data/theme";
 import { LinearGradient } from "expo-linear-gradient";
 
+import vaccineIcon from "../../assets/images/vaccine-icon.png";
 import bg from "../../assets/images/background.jpg";
 
 export function AuthSection(props: any) {
@@ -30,20 +31,35 @@ export function AuthSection(props: any) {
             backgroundColor: "rgba(221, 230, 229, 0.68)",
           }}
         >
-          <Text
+          <View
             style={{
-              fontSize: 48,
-              marginTop: 40,
-              fontFamily: "averiaLibre-regular",
-              color: colors.primaryMain,
-              textDecorationLine: "underline",
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "flex-end",
+              gap: 6,
             }}
           >
-            MyHealth
-          </Text>
+            <ImageBackground
+              source={vaccineIcon}
+              resizeMode="contain"
+              style={{ width: 50, height: 50 }}
+            />
+            <Text
+              style={{
+                fontSize: 48,
+                marginTop: 40,
+                fontFamily: "averiaLibre-regular",
+                color: colors.primaryMain,
+                textDecorationLine: "underline",
+              }}
+            >
+              MyHealth
+            </Text>
+          </View>
+
           <Text
             style={{
-              fontSize: 28,
+              fontSize: 32,
               marginTop: 20,
               textAlign: "center",
               fontFamily: "averiaLibre-regular",
