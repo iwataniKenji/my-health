@@ -2,19 +2,12 @@ import { useState } from "react";
 import { CustomInput } from "../../components/CustomInput";
 import { MainScreenContent } from "../../components/MainScreenContent";
 import { View } from "react-native";
-import { CustomButton } from "../../components/CustomButton";
-import { colors } from "../../data/theme";
-import { CustomModal } from "../../components/CustomModal";
+import { CreateNewVaccineButtons } from "./CreateNewVaccineButtons";
 
 export function CreateNewVaccineSection(props: any) {
   const [day, onChangeDay] = useState("");
   const [name, onChangeName] = useState("");
   const [nextDay, onChangeNextDay] = useState("");
-  const [modalIsVisible, setModalIsVisible] = useState(false);
-
-  const handleOpenModal = () => {
-    setModalIsVisible(true);
-  };
 
   return (
     <MainScreenContent
@@ -41,14 +34,7 @@ export function CreateNewVaccineSection(props: any) {
         />
       </View>
 
-      <CustomButton color={colors.error} handleClick={handleOpenModal}>
-        Excluir
-      </CustomButton>
-      <CustomModal
-        modalIsVisible={modalIsVisible}
-        setModalIsVisible={setModalIsVisible}
-        stackProps={props}
-      />
+      <CreateNewVaccineButtons {...props} />
     </MainScreenContent>
   );
 }
