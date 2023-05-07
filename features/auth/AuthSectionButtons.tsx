@@ -7,6 +7,14 @@ export function AuthSectionButtons(props: any) {
     props.navigation.navigate("Drawer");
   };
 
+  const handleCreate = () => {
+    props.navigation.navigate("Cadastro");
+  };
+
+  const handleChangePassword = () => {
+    props.navigation.navigate("Password");
+  };
+
   const sectionButtons = [
     {
       text: "Entrar",
@@ -16,16 +24,12 @@ export function AuthSectionButtons(props: any) {
     {
       text: "Criar minha conta",
       color: colors.primaryMain,
-      handleClick: () => {
-        Alert.alert("Criar conta", "Conta criada com sucesso!");
-      },
+      handleClick: handleCreate,
     },
     {
       text: "Esqueci minha senha",
       color: colors.grayMain,
-      handleClick: () => {
-        Alert.alert("Esqueci minha senha", "Senha recuperada com sucesso!");
-      },
+      handleClick: handleChangePassword,
     },
   ];
 
