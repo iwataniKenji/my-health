@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { View, Text } from "react-native";
 import { ActivityIndicator, MD2Colors } from "react-native-paper";
-import { CustomInput } from "../../components/CustomInput";
 import { colors } from "../../data/theme";
+import { AuthCustomInput } from "./AuthCustomInput";
 
 export function AuthSectionInputs() {
   const [email, onChangeEmail] = useState("");
@@ -15,8 +15,12 @@ export function AuthSectionInputs() {
       {/* LOADING */}
       <ActivityIndicator animating={isLoading} color={MD2Colors.red800} />
 
-      <CustomInput label="E-mail" value={email} onChangeText={onChangeEmail} />
-      <CustomInput
+      <AuthCustomInput
+        label="E-mail"
+        value={email}
+        onChangeText={onChangeEmail}
+      />
+      <AuthCustomInput
         label="Senha"
         value={password}
         onChangeText={onChangePassword}
@@ -26,7 +30,8 @@ export function AuthSectionInputs() {
       {!isValid && (
         <Text
           style={{
-            marginLeft: 60,
+            marginTop: -5,
+            marginLeft: 67,
             fontFamily: "averiaLibre-regular",
             color: colors.error,
           }}

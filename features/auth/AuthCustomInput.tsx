@@ -1,5 +1,5 @@
 import { View, Text, TextInput, TextInputProps } from "react-native";
-import { colors } from "../data/theme";
+import { colors } from "../../data/theme";
 
 type Props = TextInputProps & {
   label: string;
@@ -7,36 +7,37 @@ type Props = TextInputProps & {
   onChangeText: (value: string) => void;
 };
 
-export function CustomInput({ label, value, onChangeText, ...rest }: Props) {
+export function AuthCustomInput({
+  label,
+  value,
+  onChangeText,
+  ...rest
+}: Props) {
   return (
     <View
       style={{
         display: "flex",
         flexDirection: "row",
         alignItems: "center",
-        justifyContent: "flex-end",
-        gap: 10,
-        marginLeft: 10,
       }}
     >
       <Text
         style={{
           fontSize: 18,
           color: colors.white,
-          textAlign: "right",
           fontFamily: "averiaLibre-regular",
-          width: "50%",
+          width: "20%",
         }}
       >
         {label}
       </Text>
       <TextInput
         style={{
-          height: 35,
+          height: 40,
           marginVertical: 12,
           borderRadius: 2,
-          paddingHorizontal: 10,
-          width: "55%",
+          padding: 10,
+          width: "80%",
           backgroundColor: colors.white,
           fontFamily: "averiaLibre-regular",
           color: colors.primaryMain,

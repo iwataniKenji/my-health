@@ -2,6 +2,8 @@ import { useState } from "react";
 import { CustomInput } from "../../components/CustomInput";
 import { MainScreenContent } from "../../components/MainScreenContent";
 import { View } from "react-native";
+import { CustomButton } from "../../components/CustomButton";
+import { colors } from "../../data/theme";
 
 export function SignupSection(props: any) {
   const [name, onChangeName] = useState("");
@@ -9,6 +11,10 @@ export function SignupSection(props: any) {
   const [email, onChangeEmail] = useState("");
   const [password, onChangePassword] = useState("");
   const [confirmation, onChangeConfirmation] = useState("");
+
+  const handleSignup = () => {
+    props.navigation.goBack();
+  };
 
   return (
     <MainScreenContent
@@ -50,6 +56,9 @@ export function SignupSection(props: any) {
           secureTextEntry
         />
       </View>
+      <CustomButton color={colors.success} handleClick={handleSignup}>
+        Cadastrar
+      </CustomButton>
     </MainScreenContent>
   );
 }

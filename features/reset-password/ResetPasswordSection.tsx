@@ -1,10 +1,16 @@
 import { useState } from "react";
-import { CustomInput } from "../../components/CustomInput";
 import { MainScreenContent } from "../../components/MainScreenContent";
 import { View } from "react-native";
+import { AuthCustomInput } from "../auth/AuthCustomInput";
+import { CustomButton } from "../../components/CustomButton";
+import { colors } from "../../data/theme";
 
 export function ResetPasswordSection(props: any) {
   const [email, onChangeEmail] = useState("");
+
+  const handleResetPassword = () => {
+    props.navigation.goBack();
+  };
 
   return (
     <MainScreenContent
@@ -18,12 +24,15 @@ export function ResetPasswordSection(props: any) {
           height: 400,
         }}
       >
-        <CustomInput
+        <AuthCustomInput
           label="E-mail"
           value={email}
           onChangeText={onChangeEmail}
         />
       </View>
+      <CustomButton color={colors.success} handleClick={handleResetPassword}>
+        Recuperar senha
+      </CustomButton>
     </MainScreenContent>
   );
 }
