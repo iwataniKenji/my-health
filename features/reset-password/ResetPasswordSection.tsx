@@ -7,7 +7,7 @@ export function ResetPasswordSection(props: any) {
   const [email, onChangeEmail] = useState("");
 
   return (
-    <MainScreenContent toolbarTitle="My Health" {...props}>
+    <MainScreenContent toolbarTitle="My Health" drawerProps={props}>
       <View
         style={{
           display: "flex",

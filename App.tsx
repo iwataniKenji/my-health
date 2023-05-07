@@ -1,5 +1,5 @@
 import AppLoading from "expo-app-loading";
-import Navigation from "./components/Navigation";
+import Navigation from "./components/navigation/Navigation";
 import { useState } from "react";
 import * as Font from "expo-font";
 

@@ -7,14 +7,14 @@ import { colors } from "../data/theme";
 type Props = {
   toolbarTitle: string;
   children: ReactNode;
-  props: any;
+  drawerProps: any;
 };
 
-export function MainScreenContent({ toolbarTitle, children, props }: Props) {
-  const returnToAuth = () => {
-    props.navigation.popToTop();
-  };
-
+export function MainScreenContent({
+  toolbarTitle,
+  children,
+  drawerProps,
+}: Props) {
   return (
     <View
       style={{
@@ -23,7 +23,7 @@ export function MainScreenContent({ toolbarTitle, children, props }: Props) {
         backgroundColor: colors.bgDark,
       }}
     >
-      <TopToolbar title={toolbarTitle} />
+      <TopToolbar title={toolbarTitle} drawerProps={drawerProps} />
       <View
         style={{
           display: "flex",
@@ -34,9 +34,6 @@ export function MainScreenContent({ toolbarTitle, children, props }: Props) {
         }}
       >
         {children}
-        <CustomButton color={colors.success} handleClick={returnToAuth}>
-          Nova vacina
-        </CustomButton>
       </View>
     </View>
   );

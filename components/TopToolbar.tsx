@@ -3,11 +3,12 @@ import { colors } from "../data/theme";
 
 type Props = {
   title: string;
+  drawerProps: any;
 };
 
-export function TopToolbar({ title }: Props) {
+export function TopToolbar({ title, drawerProps }: Props) {
   const openMenu = () => {
-    console.log("open menu");
+    drawerProps.navigation.openDrawer();
   };
 
   return (
@@ -16,7 +17,8 @@ export function TopToolbar({ title }: Props) {
         display: "flex",
         flexDirection: "row",
         justifyContent: "flex-start",
-        paddingVertical: 10,
+        paddingTop: 50,
+        paddingBottom: 10,
         gap: 10,
         backgroundColor: colors.bgMain,
       }}
