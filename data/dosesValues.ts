@@ -1,6 +1,7 @@
 import { Doses } from "../enums/Doses";
+import { SelectOptions } from "../types/SelectOptions";
 
-export const dosesValues = [
+export const dosesValues: SelectOptions[] = [
   {
     value: Doses.FIRST_DOSE,
     label: "1ª Dose",
