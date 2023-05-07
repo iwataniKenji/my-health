@@ -1,14 +1,9 @@
 import { Text, TouchableOpacity, View } from "react-native";
 import { colors } from "../data/theme";
 
-type Props = {
-  title: string;
-  drawerProps: any;
-};
-
-export function TopToolbar({ title, drawerProps }: Props) {
+export function TopToolbar(props: any) {
   const openMenu = () => {
-    drawerProps.navigation.openDrawer();
+    props.navigation.openDrawer();
   };
 
   return (
@@ -40,7 +35,7 @@ export function TopToolbar({ title, drawerProps }: Props) {
           fontFamily: "averiaLibre-regular",
         }}
       >
-        {title}
+        {props.title}
       </Text>
     </View>
   );

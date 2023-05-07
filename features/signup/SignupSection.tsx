@@ -11,7 +11,9 @@ export function SignupSection(props: any) {
   const [confirmation, onChangeConfirmation] = useState("");
 
   return (
-    <MainScreenContent toolbarTitle="My Health" drawerProps={props}>
+    <MainScreenContent
+      drawerProps={{ ...props, goBackButton: false, title: "My Health" }}
+    >
       <View
         style={{
           display: "flex",

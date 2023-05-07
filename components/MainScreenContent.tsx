@@ -1,20 +1,14 @@
 import { View } from "react-native";
-import { CustomButton } from "./CustomButton";
 import { TopToolbar } from "./TopToolbar";
 import { ReactNode } from "react";
 import { colors } from "../data/theme";
 
 type Props = {
-  toolbarTitle: string;
   children: ReactNode;
   drawerProps: any;
 };
 
-export function MainScreenContent({
-  toolbarTitle,
-  children,
-  drawerProps,
-}: Props) {
+export function MainScreenContent({ children, drawerProps }: Props) {
   return (
     <View
       style={{
@@ -23,7 +17,7 @@ export function MainScreenContent({
         backgroundColor: colors.bgDark,
       }}
     >
-      <TopToolbar title={toolbarTitle} drawerProps={drawerProps} />
+      <TopToolbar {...drawerProps} />
       <View
         style={{
           display: "flex",

@@ -10,9 +10,11 @@ export function MyVaccinesSection(props: any) {
   };
 
   return (
-    <MainScreenContent toolbarTitle="Minhas vacinas" drawerProps={props}>
+    <MainScreenContent
+      drawerProps={{ ...props, goBackButton: false, title: "Minhas vacinas" }}
+    >
       <Searchbar />
-      <MyVaccinesGrid />
+      <MyVaccinesGrid stackProps={props} />
       <CustomButton color={colors.success} handleClick={handleAddNewVaccine}>
         Nova vacina
       </CustomButton>

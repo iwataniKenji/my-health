@@ -3,10 +3,10 @@ import { colors } from "../../data/theme";
 
 type Props = {
   title: string;
-  date: string;
+  nextDose?: Date;
 };
 
-export function NextVaccinesCard({ title, date }: Props) {
+export function NextVaccinesCard({ title, nextDose }: Props) {
   return (
     <View
       style={{
@@ -32,7 +32,7 @@ export function NextVaccinesCard({ title, date }: Props) {
           color: colors.grayDark,
         }}
       >
-        {date}
+        {nextDose.toLocaleDateString()}
       </Text>
     </View>
   );

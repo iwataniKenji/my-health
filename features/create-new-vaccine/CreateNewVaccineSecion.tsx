@@ -17,7 +17,9 @@ export function CreateNewVaccineSection(props: any) {
   };
 
   return (
-    <MainScreenContent toolbarTitle="Minhas vacinas" drawerProps={props}>
+    <MainScreenContent
+      drawerProps={{ ...props, goBackButton: false, title: "Minhas vacinas" }}
+    >
       <View
         style={{
           display: "flex",
