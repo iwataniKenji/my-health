@@ -1,21 +1,6 @@
 import { View } from "react-native";
 import { NextVaccinesCard } from "./NextVaccinesCard";
-import { vaccinesMocked } from '../../data/persistence';
-
-const data = [
-  {
-    title: "BCG",
-    date: "20/09/2022",
-  },
-  {
-    title: "DTpa",
-    date: "20/09/2024",
-  },
-  {
-    title: "Sarampo",
-    date: "03/04/2026",
-  },
-];
+import { vaccinesMocked } from "../../data/persistence";
 
 export function NextVaccinesList() {
   return (
@@ -25,6 +10,7 @@ export function NextVaccinesList() {
         alignItems: "center",
         gap: 15,
         width: "100%",
+        height: "70%",
       }}
     >
       {vaccinesMocked.map((item) => (
