@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { CustomInput } from "../../components/CustomInput";
 import { MainScreenContent } from "../../components/MainScreenContent";
 import { View } from "react-native";
@@ -8,6 +8,16 @@ export function CreateNewVaccineSection(props: any) {
   const [day, onChangeDay] = useState("");
   const [name, onChangeName] = useState("");
   const [nextDay, onChangeNextDay] = useState("");
+
+  useEffect(() => {
+    if (props.route.params) {
+      const { title, date, nextDose } = props.route.params;
+
+      onChangeDay(date ? date.toLocaleDateString() : "");
+      onChangeName(title ? title : "");
+      onChangeNextDay(nextDose ? nextDose.toLocaleDateString() : "");
+    }
+  }, []);
 
   return (
     <MainScreenContent

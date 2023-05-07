@@ -13,6 +13,7 @@ export function MyVaccinesGrid({ stackProps }: Props) {
         data={vaccinesMocked}
         renderItem={({ item }) => (
           <MyVaccineCard
+            id={item.id}
             title={item.title}
             doses={item.doses}
             date={item.date}

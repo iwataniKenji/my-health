@@ -1,29 +1,57 @@
-import { Text, View } from "react-native";
+import { Image, Text, TouchableOpacity } from "react-native";
 import { colors } from "../../data/theme";
 
+// TODO -> corrigir passagem de imagens
+import imageEx from "../../assets/images/vac-example.jpeg";
+
 type Props = {
+  id: string;
   title: string;
-  about: string;
-  date: string;
-  nextDose?: string;
+  doses: string;
+  date: Date;
+  stackProps: any;
+  nextDose?: Date;
+  image?: string;
 };
 
-export function MyVaccineCard({ title, about, date, nextDose }: Props) {
+export function MyVaccineCard({
+  id,
+  title,
+  doses,
+  date,
+  stackProps,
+  nextDose,
+  image,
+}: Props) {
   const nextDoseText = nextDose
-    ? `Próxima dose em: ${nextDose}`
+    ? `Próxima dose em: ${nextDose.toLocaleDateString()}`
     : "Não há próxima dose";
 
+  const handleEditVaccine = () => {
+    stackProps.navigation.navigate("Criar vacina", {
+      id,
+      title,
+      doses,
+      date,
+      nextDose,
+      image,
+    });
+  };
+
   return (
-    <View
+    <TouchableOpacity
       style={{
+        margin: 5,
         display: "flex",
         alignItems: "center",
-        gap: 5,
-        padding: 10,
+        gap: 2,
+        paddingTop: 10,
         borderRadius: 10,
         backgroundColor: "white",
-        width: "45%",
+        width: 170,
+        height: 160,
       }}
+      onPress={handleEditVaccine}
     >
       <Text
         style={{
@@ -44,7 +72,7 @@ export function MyVaccineCard({ title, about, date, nextDose }: Props) {
           color: colors.white,
         }}
       >
-        {about}
+        {doses}
       </Text>
       <Text
         style={{
@@ -52,16 +80,27 @@ export function MyVaccineCard({ title, about, date, nextDose }: Props) {
           color: colors.grayDark,
         }}
       >
-        {date}
+        {date.toLocaleDateString()}
       </Text>
+      <Image
+        source={imageEx}
+        resizeMode="contain"
+        style={{
+          maxHeight: 70,
+          margin: 0,
+          padding: 0,
+        }}
+      />
+
       <Text
         style={{
+          textAlign: "right",
           fontSize: 10,
           color: colors.error,
         }}
       >
         {nextDoseText}
       </Text>
-    </View>
+    </TouchableOpacity>
   );
 }

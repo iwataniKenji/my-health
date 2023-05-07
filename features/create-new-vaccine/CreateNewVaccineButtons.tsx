@@ -8,7 +8,7 @@ import { DeleteButton } from "./DeleteButton";
 export function CreateNewVaccineButtons(props: any) {
   const [modalIsVisible, setModalIsVisible] = useState(false);
 
-  const isEditMode = true;
+  const isEditMode = props.route.params?.id;
 
   const handleSaveVaccine = () => {
     props.navigation.pop();
