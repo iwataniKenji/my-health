@@ -4,9 +4,13 @@ import { MainScreenContent } from "../../components/MainScreenContent";
 import { View } from "react-native";
 import { CustomButton } from "../../components/CustomButton";
 import { colors } from "../../data/theme";
+import { Gender } from "../../enums/Gender";
+import { CustomRadioGroup } from "../../components/CustomRadioGroup";
+import { genderValues } from "../../data/genderValues";
 
 export function SignupSection(props: any) {
   const [name, onChangeName] = useState("");
+  const [gender, setGender] = useState(Gender.MALE);
   const [date, onChangeDate] = useState("");
   const [email, onChangeEmail] = useState("");
   const [password, onChangePassword] = useState("");
@@ -32,6 +36,11 @@ export function SignupSection(props: any) {
           label="Nome completo"
           value={name}
           onChangeText={onChangeName}
+        />
+        <CustomRadioGroup
+          value={gender}
+          setValue={setGender}
+          options={genderValues}
         />
         <CustomInput
           label="Data de nascimento"

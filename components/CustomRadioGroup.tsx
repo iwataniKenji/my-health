@@ -14,7 +14,9 @@ export function CustomRadioGroup({ value, setValue, options }: Props) {
       style={{
         display: "flex",
         flexDirection: "row",
-        backgroundColor: "white",
+        justifyContent: "flex-end",
+        marginVertical: 4,
+        paddingRight: 10,
       }}
     >
       {options.map((option) => {
