@@ -1,23 +1,28 @@
-import { View } from "react-native";
+import { View, FlatList } from "react-native";
 import { MyVaccineCard } from "./MyVaccineCard";
 import { vaccinesMocked } from "../../data/persistence";
 
-export function MyVaccinesGrid() {
+type Props = {
+  stackProps: any;
+};
+
+export function MyVaccinesGrid({ stackProps }: Props) {
   return (
-    <View
-      style={{
-        gap: 10,
-      }}
-    >
-      {vaccinesMocked.map((vaccine) => (
-        <MyVaccineCard
-          key={vaccine.id}
-          title={vaccine.title}
-          doses={vaccine.doses}
-          date={vaccine.date}
-          nextDose={vaccine.nextDose}
-        />
-      ))}
+    <View style={{ height: "70%" }}>
+      <FlatList
+        data={vaccinesMocked}
+        renderItem={({ item }) => (
+          <MyVaccineCard
+            title={item.title}
+            doses={item.doses}
+            date={item.date}
+            nextDose={item.nextDose}
+            stackProps={stackProps}
+          />
+        )}
+        keyExtractor={(item) => item.id}
+        numColumns={2}
+      />
     </View>
   );
 }

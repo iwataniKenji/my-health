@@ -7,7 +7,7 @@ export const vaccinesMocked: Vaccine[] = [
     doses: "Dose única",
     date: new Date("2022-06-11"),
     nextDose: new Date("2022-06-11"),
-    // image: "./assets/images/vac-example.jpeg",
+    image: "vac-example.jpeg",
   },
   {
     id: "2",
@@ -15,7 +15,7 @@ export const vaccinesMocked: Vaccine[] = [
     doses: "1a. dose",
     date: new Date("2022-11-10"),
     nextDose: new Date("2023-10-11"),
-    // image: "./assets/images/vac-example.jpeg",
+    image: "vac-example.jpeg",
   },
   {
     id: "3",
@@ -23,6 +23,14 @@ export const vaccinesMocked: Vaccine[] = [
     doses: "1a. dose",
     date: new Date("2022-11-10"),
     nextDose: new Date("2023-10-02"),
-    // image: "./assets/images/vac-example.jpeg",
+    image: "vac-example.jpeg",
+  },
+  {
+    id: "4",
+    title: "Febre amarela",
+    doses: "1a. dose",
+    date: new Date("2022-11-10"),
+    nextDose: new Date("2023-10-02"),
+    image: "vac-example.jpeg",
   },
 ];
