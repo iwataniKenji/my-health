@@ -1,5 +1,6 @@
 import { View } from "react-native";
 import { NextVaccinesCard } from "./NextVaccinesCard";
+import { vaccinesMocked } from '../../data/persistence';
 
 const data = [
   {
@@ -26,8 +27,8 @@ export function NextVaccinesList() {
         width: "100%",
       }}
     >
-      {data.map((item) => (
-        <NextVaccinesCard title={item.title} date={item.date} />
+      {vaccinesMocked.map((item) => (
+        <NextVaccinesCard title={item.title} nextDose={item.nextDose} />
       ))}
     </View>
   );
