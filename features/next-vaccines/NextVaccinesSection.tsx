@@ -3,9 +3,7 @@ import { MainScreenContent } from "../../components/MainScreenContent";
 
 export function NextVaccinesSection(props: any) {
   return (
-    <MainScreenContent
-      drawerProps={{ ...props, goBackButton: false, title: "Próximas vacinas" }}
-    >
+    <MainScreenContent drawerProps={{ ...props, title: "Próximas vacinas" }}>
       <NextVaccinesList />
     </MainScreenContent>
   );

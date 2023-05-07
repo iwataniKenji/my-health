@@ -12,7 +12,7 @@ export function SignupSection(props: any) {
 
   return (
     <MainScreenContent
-      drawerProps={{ ...props, goBackButton: false, title: "My Health" }}
+      drawerProps={{ ...props, goBackButton: true, title: "Nova Conta" }}
     >
       <View
         style={{

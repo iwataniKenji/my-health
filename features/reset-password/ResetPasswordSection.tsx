@@ -8,7 +8,7 @@ export function ResetPasswordSection(props: any) {
 
   return (
     <MainScreenContent
-      drawerProps={{ ...props, goBackButton: false, title: "My Health" }}
+      drawerProps={{ ...props, goBackButton: true, title: "My Health" }}
     >
       <View
         style={{
