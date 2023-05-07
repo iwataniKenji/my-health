@@ -1,0 +1,6 @@
+export enum Doses {
+  FIRST_DOSE = "FIRST_DOSE",
+  SECOND_DOSE = "SECOND_DOSE",
+  THIRD_DOSE = "THIRD_DOSE",
+  SINGLE_DOSE = "SINGLE_DOSE",
+}

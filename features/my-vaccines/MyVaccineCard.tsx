@@ -1,5 +1,7 @@
 import { Image, Text, TouchableOpacity } from "react-native";
 import { colors } from "../../data/theme";
+import { dosesEnumToString } from "../../utils/dosesEnumToString";
+import { Doses } from "../../enums/Doses";
 
 // TODO -> corrigir passagem de imagens
 import imageEx from "../../assets/images/vac-example.jpeg";
@@ -7,7 +9,7 @@ import imageEx from "../../assets/images/vac-example.jpeg";
 type Props = {
   id: string;
   title: string;
-  doses: string;
+  doses: Doses;
   date: Date;
   stackProps: any;
   nextDose?: Date;
@@ -72,7 +74,7 @@ export function MyVaccineCard({
           color: colors.white,
         }}
       >
-        {doses}
+        {dosesEnumToString(doses)}
       </Text>
       <Text
         style={{

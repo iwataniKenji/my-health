@@ -2,7 +2,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { AuthSection } from "../../features/auth/AuthSection";
 import { DrawerComponent } from "../drawer/DrawerComponent";
-import { CreateNewVaccineSection } from "../../features/create-new-vaccine/CreateNewVaccineSecion";
+import { CreateNewVaccineSection } from "../../features/create-new-vaccine/CreateNewVaccineSection";
 import { ResetPasswordSection } from "../../features/reset-password/ResetPasswordSection";
 import { SignupSection } from "../../features/signup/SignupSection";
 
