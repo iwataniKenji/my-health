@@ -1,5 +1,6 @@
 import { View, Modal, Text, Pressable } from "react-native";
 import { colors } from "../data/theme";
+import { vaccinesMocked } from "../data/persistence";
 
 type Props = {
   modalIsVisible: boolean;
@@ -14,6 +15,9 @@ export function CustomModal({
 }: Props) {
   const handleModalConfirm = () => {
     setModalIsVisible(false);
+
+    vaccinesMocked.splice(stackProps.route.params.id, 1);
+
     stackProps.navigation.pop();
   };
 

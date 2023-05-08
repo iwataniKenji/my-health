@@ -22,6 +22,7 @@ export function CustomRadioGroup({ value, setValue, options }: Props) {
       {options.map((option) => {
         return (
           <View
+            key={option.value}
             style={{
               display: "flex",
               flexDirection: "row",
