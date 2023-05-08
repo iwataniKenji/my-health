@@ -6,10 +6,14 @@ import { CreateNewVaccineButtons } from "./CreateNewVaccineButtons";
 import { Doses } from "../../enums/Doses";
 import { CustomRadioGroup } from "../../components/CustomRadioGroup";
 import { dosesValues } from "../../data/dosesValues";
-import { vaccinesMocked } from "../../data/persistence";
 import { CustomDatePicker } from "../../components/CustomDatePicker";
+import { useCreateVaccine } from "../../hooks/useCreateVaccine";
+import { useUpdateVaccine } from "../../hooks/useUpdateVaccine";
 
 export function CreateNewVaccineSection(props: any) {
+  const createVaccine = useCreateVaccine();
+  const updateVaccine = useUpdateVaccine();
+
   const [date, setDate] = useState(undefined);
   const [title, setTitle] = useState("");
   const [doses, setDoses] = useState(Doses.SINGLE_DOSE);
@@ -30,36 +34,15 @@ export function CreateNewVaccineSection(props: any) {
 
   const handleCreateUpdateVaccine = (isEditMode: boolean) => {
     if (isEditMode) {
-      const foundVaccine = vaccinesMocked.find(
-        (v) => v.id === props.route.params.id
-      );
-
-      if (foundVaccine) {
-        foundVaccine.title = title;
-        foundVaccine.date = date;
-        foundVaccine.doses = doses;
-        foundVaccine.nextDose = nextDose;
-        foundVaccine.image = image;
-      }
-
-      vaccinesMocked.map((v) => {
-        if (v.id === props.route.params.id) {
-          return foundVaccine;
-        }
-
-        return v;
-      });
-
-      console.log("vaccinesMocked", vaccinesMocked);
-    } else {
-      vaccinesMocked.push({
-        id: (vaccinesMocked.length + 1).toString(),
+      updateVaccine(props.route.params.id, {
         title,
         date,
         doses,
         nextDose,
         image,
       });
+    } else {
+      createVaccine({ title, date, doses, nextDose, image });
     }
 
     props.navigation.pop();
