@@ -7,8 +7,8 @@ import { AuthCustomInput } from "./AuthCustomInput";
 export function AuthSectionInputs() {
   const [email, onChangeEmail] = useState("");
   const [password, onChangePassword] = useState("");
-  const [isValid, setIsValid] = useState(false); // TODO -> substituir por validação
-  const [isLoading, setIsLoading] = useState(false); // TODO -> substituir loading
+  const [isValid, setIsValid] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   return (
     <View>

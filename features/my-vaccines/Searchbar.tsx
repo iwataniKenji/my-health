@@ -6,30 +6,27 @@ export function Searchbar() {
   const [search, onSearch] = useState("");
 
   return (
-    <>
-      {/* TODO -> adicionar ícone de lupa */}
-      <View
+    <View
+      style={{
+        display: "flex",
+        flexDirection: "row",
+        alignItems: "center",
+      }}
+    >
+      <TextInput
         style={{
-          display: "flex",
-          flexDirection: "row",
-          alignItems: "center",
+          height: 40,
+          borderRadius: 2,
+          padding: 10,
+          width: "90%",
+          backgroundColor: colors.white,
+          fontFamily: "averiaLibre-regular",
+          color: colors.grayDark,
         }}
-      >
-        <TextInput
-          style={{
-            height: 40,
-            borderRadius: 2,
-            padding: 10,
-            width: "90%",
-            backgroundColor: colors.white,
-            fontFamily: "averiaLibre-regular",
-            color: colors.grayDark,
-          }}
-          onChangeText={onSearch}
-          value={search}
-          placeholder="PESQUISAR VACINA..."
-        />
-      </View>
-    </>
+        onChangeText={onSearch}
+        value={search}
+        placeholder="PESQUISAR VACINA..."
+      />
+    </View>
   );
 }
