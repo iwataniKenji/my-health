@@ -6,23 +6,64 @@ import { CreateNewVaccineButtons } from "./CreateNewVaccineButtons";
 import { Doses } from "../../enums/Doses";
 import { CustomRadioGroup } from "../../components/CustomRadioGroup";
 import { dosesValues } from "../../data/dosesValues";
+import { vaccinesMocked } from "../../data/persistence";
+import { CustomDatePicker } from "../../components/CustomDatePicker";
 
 export function CreateNewVaccineSection(props: any) {
-  const [day, onChangeDay] = useState("");
-  const [name, onChangeName] = useState("");
+  const [date, setDate] = useState(undefined);
+  const [title, setTitle] = useState("");
   const [doses, setDoses] = useState(Doses.SINGLE_DOSE);
-  const [nextDay, onChangeNextDay] = useState("");
+  const [nextDose, setNextDose] = useState(undefined);
+  const [image, setImage] = useState(undefined);
 
   useEffect(() => {
     if (props.route.params) {
-      const { title, date, doses, nextDose } = props.route.params;
+      const { title, date, doses, nextDose, image } = props.route.params;
 
-      onChangeDay(date ? date.toLocaleDateString() : "");
-      onChangeName(title ? title : "");
+      setDate(date ? date : undefined);
+      setTitle(title ? title : "");
       setDoses(doses ? doses : Doses.SINGLE_DOSE);
-      onChangeNextDay(nextDose ? nextDose.toLocaleDateString() : "");
+      setNextDose(nextDose ? nextDose : undefined);
+      setImage(image ? image : undefined);
     }
   }, []);
+
+  const handleCreateUpdateVaccine = (isEditMode: boolean) => {
+    if (isEditMode) {
+      const foundVaccine = vaccinesMocked.find(
+        (v) => v.id === props.route.params.id
+      );
+
+      if (foundVaccine) {
+        foundVaccine.title = title;
+        foundVaccine.date = date;
+        foundVaccine.doses = doses;
+        foundVaccine.nextDose = nextDose;
+        foundVaccine.image = image;
+      }
+
+      vaccinesMocked.map((v) => {
+        if (v.id === props.route.params.id) {
+          return foundVaccine;
+        }
+
+        return v;
+      });
+
+      console.log("vaccinesMocked", vaccinesMocked);
+    } else {
+      vaccinesMocked.push({
+        id: (vaccinesMocked.length + 1).toString(),
+        title,
+        date,
+        doses,
+        nextDose,
+        image,
+      });
+    }
+
+    props.navigation.pop();
+  };
 
   return (
     <MainScreenContent
@@ -36,25 +77,28 @@ export function CreateNewVaccineSection(props: any) {
           height: 400,
         }}
       >
-        <CustomInput
+        <CustomDatePicker
           label="Data de vacinação"
-          value={day}
-          onChangeText={onChangeDay}
+          value={date}
+          onChange={setDate as any}
         />
-        <CustomInput label="Vacina" value={name} onChangeText={onChangeName} />
+        <CustomInput label="Vacina" value={title} onChangeText={setTitle} />
         <CustomRadioGroup
           value={doses}
           setValue={setDoses}
           options={dosesValues}
         />
-        <CustomInput
+        <CustomDatePicker
           label="Próxima vacinação"
-          value={nextDay}
-          onChangeText={onChangeNextDay}
+          value={nextDose}
+          onChange={setNextDose as any}
         />
       </View>
 
-      <CreateNewVaccineButtons {...props} />
+      <CreateNewVaccineButtons
+        stackProps={props}
+        handleCreateUpdateVaccine={handleCreateUpdateVaccine}
+      />
     </MainScreenContent>
   );
 }

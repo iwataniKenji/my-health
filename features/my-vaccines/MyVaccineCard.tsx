@@ -10,7 +10,7 @@ type Props = {
   id: string;
   title: string;
   doses: Doses;
-  date: Date;
+  date?: Date;
   stackProps: any;
   nextDose?: Date;
   image?: string;
@@ -82,7 +82,7 @@ export function MyVaccineCard({
           color: colors.grayDark,
         }}
       >
-        {date.toLocaleDateString()}
+        {date ? date.toLocaleDateString() : "Não há data"}
       </Text>
       <Image
         source={imageEx}

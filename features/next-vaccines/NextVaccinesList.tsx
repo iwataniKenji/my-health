@@ -14,7 +14,11 @@ export function NextVaccinesList() {
       }}
     >
       {vaccinesMocked.map((item) => (
-        <NextVaccinesCard title={item.title} nextDose={item.nextDose} />
+        <NextVaccinesCard
+          key={item.id}
+          title={item.title}
+          nextDose={item.nextDose}
+        />
       ))}
     </View>
   );

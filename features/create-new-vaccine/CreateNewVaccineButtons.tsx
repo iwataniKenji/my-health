@@ -5,14 +5,18 @@ import { colors } from "../../data/theme";
 import { CustomModal } from "../../components/CustomModal";
 import { DeleteButton } from "./DeleteButton";
 
-export function CreateNewVaccineButtons(props: any) {
+type Props = {
+  stackProps: any;
+  handleCreateUpdateVaccine: (isEditMode: boolean) => void;
+};
+
+export function CreateNewVaccineButtons({
+  stackProps,
+  handleCreateUpdateVaccine,
+}: Props) {
   const [modalIsVisible, setModalIsVisible] = useState(false);
 
-  const isEditMode = props.route.params?.id;
-
-  const handleSaveVaccine = () => {
-    props.navigation.pop();
-  };
+  const isEditMode = stackProps.route.params?.id ? true : false;
 
   const handleOpenModal = () => {
     setModalIsVisible(true);
@@ -27,7 +31,10 @@ export function CreateNewVaccineButtons(props: any) {
         gap: 80,
       }}
     >
-      <CustomButton color={colors.success} handleClick={handleSaveVaccine}>
+      <CustomButton
+        color={colors.success}
+        handleClick={() => handleCreateUpdateVaccine(isEditMode)}
+      >
         {isEditMode ? "Salvar alterações" : "Cadastrar"}
       </CustomButton>
       {isEditMode && (
@@ -36,7 +43,7 @@ export function CreateNewVaccineButtons(props: any) {
           <CustomModal
             modalIsVisible={modalIsVisible}
             setModalIsVisible={setModalIsVisible}
-            stackProps={props}
+            stackProps={stackProps}
           />
         </View>
       )}
