@@ -1,7 +1,7 @@
 import { TouchableOpacity, Text, Image } from "react-native";
 import { colors } from "../../data/theme";
 
-import trashIcon from "../../assets/images/trash-icon.png";
+const trashIcon = require("../../assets/images/trash-icon.png");
 
 type Props = {
   children: string;

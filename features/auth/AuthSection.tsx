@@ -5,8 +5,8 @@ import { AuthSectionInputs } from "./AuthSectionInputs";
 import { colors } from "../../data/theme";
 import { LinearGradient } from "expo-linear-gradient";
 
-import vaccineIcon from "../../assets/images/vaccine-icon.png";
-import bg from "../../assets/images/background.jpg";
+const vaccineIcon = require("../../assets/images/vaccine-icon.png");
+const bg = require("../../assets/images/background.jpg");
 
 export function AuthSection(props: any) {
   return (

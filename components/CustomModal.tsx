@@ -1,6 +1,5 @@
 import { View, Modal, Text, Pressable } from "react-native";
 import { colors } from "../data/theme";
-import { vaccinesMocked } from "../data/persistence";
 import { useRemoveVaccine } from "../hooks/useRemoveVaccine";
 
 type Props = {

@@ -1,11 +1,11 @@
-import { DrawerContentScrollView, DrawerItem } from "@react-navigation/drawer";
-import { View, Text, Image, StyleSheet } from "react-native";
+import { DrawerContentScrollView } from "@react-navigation/drawer";
+import { View, Text } from "react-native";
 import { colors } from "../../data/theme";
 import { DrawerCustomItem } from "./DrawerCustomItem";
 
-import vaccineIcon from "../../assets/images/vaccine-icon.png";
-import calendarIcon from "../../assets/images/calendar-icon.png";
-import logoutIcon from "../../assets/images/logout-icon.png";
+const vaccineIcon = require("../../assets/images/vaccine-icon.png");
+const calendarIcon = require("../../assets/images/calendar-icon.png");
+const logoutIcon = require("../../assets/images/logout-icon.png");
 
 export function DrawerContent(props: any) {
   const goToMyVaccines = () => {

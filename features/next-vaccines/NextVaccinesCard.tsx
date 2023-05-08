@@ -32,7 +32,7 @@ export function NextVaccinesCard({ title, nextDose }: Props) {
           color: colors.grayDark,
         }}
       >
-        {nextDose.toLocaleDateString()}
+        {nextDose ? nextDose.toLocaleDateString() : "Não há data"}
       </Text>
     </View>
   );

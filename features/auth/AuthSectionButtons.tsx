@@ -1,4 +1,4 @@
-import { Alert, View } from "react-native";
+import { View } from "react-native";
 import { CustomButton } from "../../components/CustomButton";
 import { colors } from "../../data/theme";
 
