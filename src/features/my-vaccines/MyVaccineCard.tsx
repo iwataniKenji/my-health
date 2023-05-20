@@ -4,7 +4,7 @@ import { dosesEnumToString } from "../../utils/dosesEnumToString";
 import { Doses } from "../../enums/Doses";
 
 // TODO -> corrigir passagem de imagens
-const imageEx = require("../../assets/images/vac-example.jpeg");
+const imageEx = require("../../../assets/images/vac-example.jpeg");
 
 type Props = {
   id: string;

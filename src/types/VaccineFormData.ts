@@ -1,4 +1,4 @@
-import { Doses } from '../enums/Doses';
+import { Doses } from "../enums/Doses";
 
 export type VaccineFormData = {
   title: string;

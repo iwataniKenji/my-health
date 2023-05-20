@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Provider as PaperProvider } from "react-native-paper";
-import Navigation from "./components/navigation/Navigation";
 import * as Font from "expo-font";
+import Navigation from "./src/components/navigation/Navigation";
 
 const getFonts = () =>
   Font.loadAsync({
