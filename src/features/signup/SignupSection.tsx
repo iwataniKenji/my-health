@@ -1,24 +1,48 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { CustomInput } from "../../components/CustomInput";
 import { MainScreenContent } from "../../components/MainScreenContent";
-import { View } from "react-native";
+import { View, Text } from "react-native";
 import { CustomButton } from "../../components/CustomButton";
 import { colors } from "../../data/theme";
 import { Gender } from "../../enums/Gender";
 import { CustomRadioGroup } from "../../components/CustomRadioGroup";
 import { genderValues } from "../../data/genderValues";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../../firebase/config";
+import { CustomDatePicker } from "../../components/CustomDatePicker";
 
 export function SignupSection(props: any) {
   const [name, onChangeName] = useState("");
   const [gender, setGender] = useState(Gender.MALE);
-  const [date, onChangeDate] = useState("");
+  const [date, onChangeDate] = useState(undefined);
   const [email, onChangeEmail] = useState("");
   const [password, onChangePassword] = useState("");
   const [confirmation, onChangeConfirmation] = useState("");
+  const [showErrorMessage, setShowErrorMessage] = useState(false);
 
   const handleSignup = () => {
-    props.navigation.goBack();
+    if (password !== confirmation) {
+      return setShowErrorMessage(true);
+    }
+
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCreated) => {
+        alert("Usuário criado com sucesso");
+
+        console.log("CREATED:", JSON.stringify(userCreated));
+
+        props.navigation.goBack();
+      })
+      .catch((error) => {
+        alert("Erro ao criar usuário");
+
+        console.log("ERROR:", JSON.stringify(error));
+      });
   };
+
+  useEffect(() => {
+    setShowErrorMessage(false);
+  }, [password, confirmation]);
 
   return (
     <MainScreenContent
@@ -42,10 +66,10 @@ export function SignupSection(props: any) {
           setValue={setGender}
           options={genderValues}
         />
-        <CustomInput
+        <CustomDatePicker
           label="Data de nascimento"
           value={date}
-          onChangeText={onChangeDate}
+          onChange={onChangeDate as any}
         />
         <CustomInput
           label="E-mail"
@@ -65,9 +89,29 @@ export function SignupSection(props: any) {
           secureTextEntry
         />
       </View>
-      <CustomButton color={colors.success} handleClick={handleSignup}>
-        Cadastrar
-      </CustomButton>
+
+      <View>
+        {showErrorMessage ? (
+          <Text
+            style={{
+              marginTop: -70,
+              marginLeft: 100,
+              fontFamily: "averiaLibre-regular",
+              color: colors.error,
+            }}
+          >
+            Senha não confere!
+          </Text>
+        ) : (
+          <View style={{ marginTop: -70 }} />
+        )}
+      </View>
+
+      <View style={{ marginTop: 70 }}>
+        <CustomButton color={colors.success} handleClick={handleSignup}>
+          Cadastrar
+        </CustomButton>
+      </View>
     </MainScreenContent>
   );
 }
