@@ -1,18 +1,44 @@
 import { View } from "react-native";
 import { CustomButton } from "../../components/CustomButton";
 import { colors } from "../../data/theme";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../../firebase/config";
 
-export function AuthSectionButtons(props: any) {
+type Props = {
+  stackProps: any;
+  email: string;
+  password: string;
+  setShowErrorMessage: (showErrorMessage: boolean) => void;
+};
+
+export function AuthSectionButtons({
+  stackProps,
+  email,
+  password,
+  setShowErrorMessage,
+}: Props) {
   const handleLogin = () => {
-    props.navigation.navigate("Drawer");
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userLogged) => {
+        alert("Usuário logado com sucesso");
+
+        console.log("LOGGED:", JSON.stringify(userLogged));
+
+        stackProps.navigation.navigate("Drawer");
+      })
+      .catch((error) => {
+        setShowErrorMessage(true);
+
+        console.log("ERROR:", JSON.stringify(error));
+      });
   };
 
   const handleCreate = () => {
-    props.navigation.navigate("Cadastro");
+    stackProps.navigation.navigate("Cadastro");
   };
 
   const handleChangePassword = () => {
-    props.navigation.navigate("Password");
+    stackProps.navigation.navigate("Password");
   };
 
   const sectionButtons = [
@@ -40,7 +66,7 @@ export function AuthSectionButtons(props: any) {
         justifyContent: "space-between",
         alignItems: "center",
         gap: 40,
-        marginTop: 20,
+        marginTop: -20,
       }}
     >
       {sectionButtons.map((button) => (

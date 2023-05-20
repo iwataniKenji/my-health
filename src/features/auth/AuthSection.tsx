@@ -4,11 +4,20 @@ import { AuthSectionButtons } from "./AuthSectionButtons";
 import { AuthSectionInputs } from "./AuthSectionInputs";
 import { colors } from "../../data/theme";
 import { LinearGradient } from "expo-linear-gradient";
+import { useEffect, useState } from "react";
 
 const vaccineIcon = require("../../../assets/images/vaccine-icon.png");
 const bg = require("../../../assets/images/background.jpg");
 
 export function AuthSection(props: any) {
+  const [email, onChangeEmail] = useState("");
+  const [password, onChangePassword] = useState("");
+  const [showErrorMessage, setShowErrorMessage] = useState(false);
+
+  useEffect(() => {
+    setShowErrorMessage(false);
+  }, [email, password]);
+
   return (
     <ImageBackground source={bg} resizeMode="cover" style={{ flex: 1 }}>
       <LinearGradient
@@ -68,8 +77,19 @@ export function AuthSection(props: any) {
           >
             Controle as suas vacinas e fique seguro
           </Text>
-          <AuthSectionInputs />
-          <AuthSectionButtons {...props} />
+          <AuthSectionInputs
+            email={email}
+            onChangeEmail={onChangeEmail}
+            password={password}
+            onChangePassword={onChangePassword}
+            showErrorMessage={showErrorMessage}
+          />
+          <AuthSectionButtons
+            stackProps={props}
+            email={email}
+            password={password}
+            setShowErrorMessage={setShowErrorMessage}
+          />
           <StatusBar style="auto" />
         </View>
       </LinearGradient>
