@@ -1,5 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
+import { initializeFirestore } from "firebase/firestore";
 import {
   API_KEY,
   AUTH_DOMAIN,
@@ -19,8 +20,9 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
+const auth = getAuth(app); // conecta ao módulo de autenticação
+const db = initializeFirestore(app, {
+  experimentalForceLongPolling: true,
+}); // conecta ao módulo de banco de dados
 
-// conecta ao módulo de autenticação
-const auth = getAuth(app);
-
-export { auth };
+export { auth, db };
