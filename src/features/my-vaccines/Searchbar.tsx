@@ -1,10 +1,12 @@
-import { useState } from "react";
 import { TextInput, View } from "react-native";
 import { colors } from "../../data/theme";
 
-export function Searchbar() {
-  const [search, onSearch] = useState("");
+type Props = {
+  search: string;
+  onSearch: (search: string) => void;
+};
 
+export function Searchbar({ search, onSearch }: Props) {
   return (
     <View
       style={{
