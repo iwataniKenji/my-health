@@ -9,12 +9,8 @@ export const useUpdateVaccine = (): HookReturn => {
     updateDoc(doc(db, "vaccines", vaccineId), {
       ...formData,
       imageUrl: null, // TODO -> mudar para o valor correto
-    })
-      .then(() => {
-        alert("Vaccine updated successfully!");
-      })
-      .catch((error) => {
-        alert("Error updating document: " + error);
-      });
+    }).catch((error) => {
+      alert("Error updating document: " + error);
+    });
   };
 };

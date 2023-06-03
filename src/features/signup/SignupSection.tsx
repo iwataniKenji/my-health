@@ -7,14 +7,15 @@ import { colors } from "../../data/theme";
 import { Gender } from "../../enums/Gender";
 import { CustomRadioGroup } from "../../components/CustomRadioGroup";
 import { genderValues } from "../../data/genderValues";
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../../firebase/config";
 import { CustomDatePicker } from "../../components/CustomDatePicker";
+import useCreateUser from "../../hooks/useCreateUser";
 
 export function SignupSection(props: any) {
+  const createUser = useCreateUser();
+
   const [name, onChangeName] = useState("");
   const [gender, setGender] = useState(Gender.MALE);
-  const [date, onChangeDate] = useState(undefined);
+  const [dateOfBirth, onChangeDateOfBirth] = useState(undefined);
   const [email, onChangeEmail] = useState("");
   const [password, onChangePassword] = useState("");
   const [confirmation, onChangeConfirmation] = useState("");
@@ -25,19 +26,16 @@ export function SignupSection(props: any) {
       return setShowErrorMessage(true);
     }
 
-    createUserWithEmailAndPassword(auth, email, password)
-      .then((userCreated) => {
-        alert("Usuário criado com sucesso");
-
-        console.log("CREATED:", JSON.stringify(userCreated));
-
-        props.navigation.goBack();
-      })
-      .catch((error) => {
-        alert("Erro ao criar usuário");
-
-        console.log("ERROR:", JSON.stringify(error));
-      });
+    createUser(
+      {
+        name,
+        gender,
+        dateOfBirth,
+        email,
+        password,
+      },
+      props.navigation.goBack()
+    );
   };
 
   useEffect(() => {
@@ -68,8 +66,8 @@ export function SignupSection(props: any) {
         />
         <CustomDatePicker
           label="Data de nascimento"
-          value={date}
-          onChange={onChangeDate as any}
+          value={dateOfBirth}
+          onChange={onChangeDateOfBirth as any}
         />
         <CustomInput
           label="E-mail"
