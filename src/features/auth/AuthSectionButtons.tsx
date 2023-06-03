@@ -1,11 +1,7 @@
 import { View } from "react-native";
 import { CustomButton } from "../../components/CustomButton";
 import { colors } from "../../data/theme";
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth, database } from "../../firebase/config";
-import { useDispatch } from "react-redux";
-import { reducerSetLogin } from "../../redux/authSlice";
-import { doc, getDoc } from "firebase/firestore";
+import { useAuthenticate } from "../../hooks/useAuthenticate";
 
 type Props = {
   stackProps: any;
@@ -20,31 +16,15 @@ export function AuthSectionButtons({
   password,
   setShowErrorMessage,
 }: Props) {
-  const dispatch = useDispatch();
+  const useAuth = useAuthenticate();
 
   const handleLogin = () => {
-    signInWithEmailAndPassword(auth, email, password)
-      .then((userLogged) => {
-        const userRef = doc(database, "users", userLogged.user.uid);
-
-        getDoc(userRef).then((user) => {
-          dispatch(
-            reducerSetLogin({
-              id: user.data()?.id,
-              name: user.data()?.name,
-            })
-          );
-        });
-
-        console.log("LOGGED:", JSON.stringify(userLogged));
-
-        stackProps.navigation.navigate("Drawer");
-      })
-      .catch((error) => {
-        setShowErrorMessage(true);
-
-        console.log("ERROR:", JSON.stringify(error));
-      });
+    useAuth(
+      email,
+      password,
+      () => stackProps.navigation.navigate("Drawer"),
+      setShowErrorMessage
+    );
   };
 
   const handleCreate = () => {

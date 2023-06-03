@@ -29,7 +29,7 @@ const useCreateUser = (): HookReturn => {
         });
       })
       .catch((error) => {
-        alert("Erro ao criar perfil de usuário: " + error);
+        alert("Erro ao criar perfil de usuário: " + error.code);
       });
   };
 

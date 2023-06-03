@@ -48,12 +48,10 @@ export function CreateNewVaccineSection(props: any) {
           nextDose,
           imageUrl,
         },
-        props.navigation.pop()
+        () => props.navigation.pop()
       );
     } else {
-      createVaccine(
-        userId,
-        { title, date, doses, nextDose, imageUrl },
+      createVaccine(userId, { title, date, doses, nextDose, imageUrl }, () =>
         props.navigation.pop()
       );
     }

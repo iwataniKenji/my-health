@@ -4,25 +4,16 @@ import { View } from "react-native";
 import { AuthCustomInput } from "../auth/AuthCustomInput";
 import { CustomButton } from "../../components/CustomButton";
 import { colors } from "../../data/theme";
-import { sendPasswordResetEmail } from "firebase/auth";
-import { auth } from "../../firebase/config";
+import { useResetPassword } from "../../hooks/useResetPassword";
 
 export function ResetPasswordSection(props: any) {
+  const resetPassword = useResetPassword();
   const [email, onChangeEmail] = useState("");
 
-  // TODO -> adicionar isLoading state
   const handleResetPassword = () => {
-    sendPasswordResetEmail(auth, email)
-      .then(() => {
-        alert("E-mail de recuperação de senha enviado com sucesso!");
+    if (email === "") return;
 
-        props.navigation.goBack();
-      })
-      .catch((error) => {
-        alert("Erro ao enviar e-mail de recuperação de senha");
-
-        console.log("ERROR:", JSON.stringify(error));
-      });
+    resetPassword(email, () => props.navigation.goBack());
   };
 
   return (
