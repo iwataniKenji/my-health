@@ -2,12 +2,15 @@ import { DrawerContentScrollView } from "@react-navigation/drawer";
 import { View, Text } from "react-native";
 import { colors } from "../../data/theme";
 import { DrawerCustomItem } from "./DrawerCustomItem";
+import { useSelector } from "react-redux";
 
 const vaccineIcon = require("../../../assets/images/vaccine-icon.png");
 const calendarIcon = require("../../../assets/images/calendar-icon.png");
 const logoutIcon = require("../../../assets/images/logout-icon.png");
 
 export function DrawerContent(props: any) {
+  const userName = useSelector((state: any) => state.auth.name);
+
   const goToMyVaccines = () => {
     props.navigation.navigate("Minhas vacinas");
   };
@@ -38,7 +41,7 @@ export function DrawerContent(props: any) {
             color: colors.primaryMain,
           }}
         >
-          Olá, Jurandir
+          {`Olá, ${userName}`}
         </Text>
       </View>
       <DrawerCustomItem

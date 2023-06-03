@@ -2,7 +2,10 @@ import { View } from "react-native";
 import { CustomButton } from "../../components/CustomButton";
 import { colors } from "../../data/theme";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../../firebase/config";
+import { auth, database } from "../../firebase/config";
+import { useDispatch } from "react-redux";
+import { reducerSetLogin } from "../../redux/authSlice";
+import { doc, getDoc } from "firebase/firestore";
 
 type Props = {
   stackProps: any;
@@ -17,10 +20,21 @@ export function AuthSectionButtons({
   password,
   setShowErrorMessage,
 }: Props) {
+  const dispatch = useDispatch();
+
   const handleLogin = () => {
     signInWithEmailAndPassword(auth, email, password)
       .then((userLogged) => {
-        alert("Usuário logado com sucesso");
+        const userRef = doc(database, "users", userLogged.user.uid);
+
+        getDoc(userRef).then((user) => {
+          dispatch(
+            reducerSetLogin({
+              id: user.data()?.id,
+              name: user.data()?.name,
+            })
+          );
+        });
 
         console.log("LOGGED:", JSON.stringify(userLogged));
 

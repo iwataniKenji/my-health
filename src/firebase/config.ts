@@ -1,6 +1,7 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
-import { initializeFirestore } from "firebase/firestore";
+import { getFirestore, initializeFirestore } from "firebase/firestore";
+import { getStorage } from "firebase/storage";
 import {
   API_KEY,
   AUTH_DOMAIN,
@@ -24,5 +25,7 @@ const auth = getAuth(app); // conecta ao módulo de autenticação
 const db = initializeFirestore(app, {
   experimentalForceLongPolling: true,
 }); // conecta ao módulo de banco de dados
+const storage = getStorage(app); // conecta ao módulo de armazenamento
+const database = getFirestore();
 
-export { auth, db };
+export { auth, db, storage, database };
