@@ -14,7 +14,8 @@ export function NextVaccinesCard({ title, nextDose }: Props) {
         padding: 10,
         borderRadius: 10,
         backgroundColor: "white",
-        width: "92%",
+        width: 350,
+        marginBottom: 10,
       }}
     >
       <Text
