@@ -8,7 +8,7 @@ export const useRemoveVaccine = (): HookReturn => {
     const userVaccinesRef = doc(db, `users/${userId}/vaccines/${vaccineId}`);
 
     deleteDoc(userVaccinesRef).catch((error) => {
-      alert("Error removing document: " + error);
+      console.log("Error removing document: " + error);
     });
   };
 };

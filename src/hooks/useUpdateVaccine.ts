@@ -26,9 +26,7 @@ export const useUpdateVaccine = (): HookReturn => {
     })
       .then(() => navigate())
       .catch((error) => {
-        console.log("error", error);
-
-        alert("Error updating document: " + error);
+        console.log("Error updating document:", error);
       });
   };
 };

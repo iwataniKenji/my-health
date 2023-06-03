@@ -2,7 +2,7 @@ import { NextVaccinesList } from "./NextVaccinesList";
 import { MainScreenContent } from "../../components/MainScreenContent";
 import { CustomButton } from "../../components/CustomButton";
 import { colors } from "../../data/theme";
-import { Doses } from '../../enums/Doses';
+import { Doses } from "../../enums/Doses";
 
 export function NextVaccinesSection(props: any) {
   const handleAddNewVaccine = () => {
@@ -12,7 +12,7 @@ export function NextVaccinesSection(props: any) {
       doses: Doses.SINGLE_DOSE,
       date: "",
       nextDose: "",
-      image: "",
+      imageUrl: "",
     });
   };
 

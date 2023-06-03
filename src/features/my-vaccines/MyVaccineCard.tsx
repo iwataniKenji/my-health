@@ -13,9 +13,10 @@ type Props = {
   date?: Date;
   stackProps: any;
   nextDose?: Date;
-  image?: string;
+  imageUrl?: string;
 };
 
+// TODO -> integrar imagens
 export function MyVaccineCard({
   id,
   title,
@@ -23,7 +24,7 @@ export function MyVaccineCard({
   date,
   stackProps,
   nextDose,
-  image,
+  imageUrl,
 }: Props) {
   const nextDoseText = nextDose
     ? `Próxima dose em: ${nextDose.toLocaleDateString()}`
@@ -36,7 +37,7 @@ export function MyVaccineCard({
       doses,
       date,
       nextDose,
-      image,
+      imageUrl,
     });
   };
 

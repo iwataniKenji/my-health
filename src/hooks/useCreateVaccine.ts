@@ -22,7 +22,7 @@ export const useCreateVaccine = (): HookReturn => {
     })
       .then(() => navigate())
       .catch((error) => {
-        alert("Error writing document: " + error);
+        console.log("Error writing document: " + error);
       });
   };
 };
