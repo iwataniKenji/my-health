@@ -1,33 +1,13 @@
 import { FlatList, View } from "react-native";
 import { NextVaccinesCard } from "./NextVaccinesCard";
-import { useEffect, useState } from "react";
-import { Vaccine } from "../../types/Vaccine";
-import { db } from "../../firebase/config";
-import { collection, onSnapshot, query } from "firebase/firestore";
+import { useEffect } from "react";
+import useVaccineList from "../../hooks/useVaccineList";
 
 export function NextVaccinesList() {
-  // TODO -> mudar para state global
-  const [vaccines, setVaccines] = useState<Vaccine[]>([]);
-
-  const q = query(collection(db, "vaccines"));
+  const { listRefresh, vaccines } = useVaccineList();
 
   useEffect(() => {
-    onSnapshot(q, (result) => {
-      const vaccinesList: any = [];
-
-      result.forEach((doc: any) => {
-        vaccinesList.push({
-          id: doc.id,
-          title: doc.data().title,
-          doses: doc.data().doses,
-          date: doc.data().date,
-          nextDose: doc.data().nextDose,
-          image: doc.data().image,
-        });
-      });
-
-      setVaccines(vaccines);
-    });
+    listRefresh();
   }, []);
 
   return (
