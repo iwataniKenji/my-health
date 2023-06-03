@@ -1,6 +1,7 @@
 import { View, Modal, Text, Pressable } from "react-native";
 import { colors } from "../data/theme";
 import { useRemoveVaccine } from "../hooks/useRemoveVaccine";
+import { useSelector } from "react-redux";
 
 type Props = {
   modalIsVisible: boolean;
@@ -15,10 +16,12 @@ export function CustomModal({
 }: Props) {
   const removeVaccine = useRemoveVaccine();
 
+  const userId = useSelector((state: any) => state.auth.id);
+
   const handleModalConfirm = () => {
     setModalIsVisible(false);
 
-    removeVaccine(stackProps.route.params.id);
+    removeVaccine(userId, stackProps.route.params.id);
 
     stackProps.navigation.pop();
   };

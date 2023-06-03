@@ -9,43 +9,54 @@ import { dosesValues } from "../../data/dosesValues";
 import { CustomDatePicker } from "../../components/CustomDatePicker";
 import { useCreateVaccine } from "../../hooks/useCreateVaccine";
 import { useUpdateVaccine } from "../../hooks/useUpdateVaccine";
+import { CustomImagePicker } from "../../components/CustomImagePicker";
+import { useSelector } from "react-redux";
 
 export function CreateNewVaccineSection(props: any) {
   const createVaccine = useCreateVaccine();
   const updateVaccine = useUpdateVaccine();
 
+  const userId = useSelector((state: any) => state.auth.id);
+
   const [date, setDate] = useState(undefined);
   const [title, setTitle] = useState("");
   const [doses, setDoses] = useState(Doses.SINGLE_DOSE);
   const [nextDose, setNextDose] = useState(undefined);
-  const [image, setImage] = useState(undefined);
+  const [imageUrl, setImageUrl] = useState("");
 
   useEffect(() => {
     if (props.route.params) {
-      const { title, date, doses, nextDose, image } = props.route.params;
+      const { title, date, doses, nextDose, imageUrl } = props.route.params;
 
       setDate(date ? date : undefined);
       setTitle(title ? title : "");
       setDoses(doses ? doses : Doses.SINGLE_DOSE);
       setNextDose(nextDose ? nextDose : undefined);
-      setImage(image ? image : undefined);
+      setImageUrl(imageUrl ? imageUrl : undefined);
     }
   }, []);
 
   const handleCreateUpdateVaccine = (isEditMode: boolean) => {
     if (isEditMode) {
-      updateVaccine(props.route.params.id, {
-        title,
-        date,
-        doses,
-        nextDose,
-        image,
-      });
+      updateVaccine(
+        userId,
+        props.route.params.id,
+        {
+          title,
+          date,
+          doses,
+          nextDose,
+          imageUrl,
+        },
+        props.navigation.pop()
+      );
     } else {
-      createVaccine({ title, date, doses, nextDose, image });
+      createVaccine(
+        userId,
+        { title, date, doses, nextDose, imageUrl },
+        props.navigation.pop()
+      );
     }
-
-    props.navigation.pop();
   };
 
   return (
@@ -70,6 +81,12 @@ export function CreateNewVaccineSection(props: any) {
           value={doses}
           setValue={setDoses}
           options={dosesValues}
+        />
+
+        <CustomImagePicker
+          label="Comprovante"
+          value={imageUrl}
+          setValue={setImageUrl}
         />
         <CustomDatePicker
           label="Próxima vacinação"

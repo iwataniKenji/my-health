@@ -1,8 +1,7 @@
-import { collection } from "firebase/firestore";
+import { doc, setDoc } from "firebase/firestore";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth, db } from "../firebase/config";
 import { UserFormData } from "../types/UserFormData";
-import { addDoc } from "firebase/firestore";
 import { omit } from "lodash";
 
 type HookReturn = (userFormData: UserFormData, navigate: () => void) => void;
@@ -15,19 +14,22 @@ const useCreateUser = (): HookReturn => {
       userFormData.password
     )
       .then((userCreated) => {
-        addDoc(collection(db, "users"), {
-          id: userCreated.user?.uid,
+        const userDocRef = doc(db, "users", userCreated.user?.uid);
+
+        setDoc(userDocRef, {
           ...omit(userFormData, ["password"]),
-        }).catch((error) => {
-          alert("Error writing document: " + error);
+          id: userCreated.user?.uid as string,
+          dateOfBirth: userFormData.dateOfBirth
+            ? userFormData.dateOfBirth
+            : null,
+        }).then(() => {
+          alert("Usuário criado com sucesso");
+
+          navigate();
         });
-
-        alert("Usuário criado com sucesso");
-
-        navigate();
       })
-      .catch((e) => {
-        alert("Erro ao criar usuário");
+      .catch((error) => {
+        alert("Erro ao criar perfil de usuário: " + error);
       });
   };
 
