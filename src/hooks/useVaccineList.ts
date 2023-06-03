@@ -28,7 +28,7 @@ const useVaccineList = (): HookReturn => {
         vaccinesList.push({
           id: doc.id,
           title: doc.data().title,
-          doses: doc.data().dose,
+          doses: doc.data().doses,
           date: doc.data().date ? doc.data().date.toDate() : null,
           nextDose: doc.data().nextDose ? doc.data().nextDose.toDate() : null,
           imageUrl: doc.data().imageUrl,

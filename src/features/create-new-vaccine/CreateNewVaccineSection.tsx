@@ -37,6 +37,8 @@ export function CreateNewVaccineSection(props: any) {
   }, []);
 
   const handleCreateUpdateVaccine = (isEditMode: boolean) => {
+    if (title === "") return alert("Preencha o campo de vacina");
+
     if (isEditMode) {
       updateVaccine(
         userId,

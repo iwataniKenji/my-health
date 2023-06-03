@@ -22,6 +22,8 @@ export const useUpdateVaccine = (): HookReturn => {
 
     updateDoc(vaccineRef, {
       ...formData,
+      date: formData.date ? formData.date : null,
+      nextDose: formData.nextDose ? formData.nextDose : null,
       imageUrl: null, // TODO -> mudar para o valor correto
     })
       .then(() => navigate())

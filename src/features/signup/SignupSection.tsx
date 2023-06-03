@@ -22,7 +22,11 @@ export function SignupSection(props: any) {
   const [showErrorMessage, setShowErrorMessage] = useState(false);
 
   const handleSignup = () => {
-    if (password !== confirmation) {
+    if (name === "" || email === "") {
+      return alert("Campos de nome e e-mail são obrigatórios");
+    }
+
+    if (password !== confirmation || password === "") {
       return setShowErrorMessage(true);
     }
 
@@ -34,7 +38,7 @@ export function SignupSection(props: any) {
         email,
         password,
       },
-      props.navigation.goBack()
+      () => props.navigation.goBack()
     );
   };
 
