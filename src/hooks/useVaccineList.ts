@@ -1,4 +1,4 @@
-import { collection, query } from "firebase/firestore";
+import { collection, doc } from "firebase/firestore";
 import { useCallback, useEffect } from "react";
 import { Vaccine } from "../types/Vaccine";
 import { onSnapshot } from "firebase/firestore";
@@ -12,32 +12,43 @@ type HookReturn = {
 };
 
 const useVaccineList = (): HookReturn => {
+  const userId = useSelector((state: any) => state.auth.id);
   const vaccines = useSelector((state: any) => state.vaccines);
   const dispatch = useDispatch();
 
   const fetchVaccines = useCallback(() => {
-    const q = query(collection(db, "vaccines"));
+    const userRef = collection(db, "users");
+    const userDocRef = doc(userRef, userId);
+    const vaccinesRef = collection(userDocRef, "vaccines");
 
-    onSnapshot(q, (result) => {
+    const unsubscribe = onSnapshot(vaccinesRef, (result) => {
       const vaccinesList: Vaccine[] = [];
 
-      result.forEach((doc: any) => {
+      result.forEach((doc) => {
         vaccinesList.push({
           id: doc.id,
           title: doc.data().title,
           doses: doc.data().dose,
-          date: doc.data().date.toDate(),
-          nextDose: doc.data().nextDose.toDate(),
+          date: doc.data().date ? doc.data().date.toDate() : null,
+          nextDose: doc.data().nextDose ? doc.data().nextDose.toDate() : null,
           imageUrl: doc.data().imageUrl,
         });
       });
 
       dispatch(reducerSetVaccineList(vaccinesList));
     });
-  }, []);
+
+    return () => {
+      unsubscribe();
+    };
+  }, [dispatch, userId]);
 
   useEffect(() => {
-    fetchVaccines();
+    const unsubscribe = fetchVaccines();
+
+    return () => {
+      unsubscribe();
+    };
   }, [fetchVaccines]);
 
   return {

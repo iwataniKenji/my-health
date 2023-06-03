@@ -5,5 +5,5 @@ export type VaccineFormData = {
   doses: Doses;
   date?: Date;
   nextDose?: Date;
-  image?: string;
+  imageUrl: string;
 };

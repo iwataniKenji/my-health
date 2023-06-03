@@ -2,15 +2,27 @@ import { db } from "../firebase/config";
 import { VaccineFormData } from "../types/VaccineFormData";
 import { addDoc, collection } from "firebase/firestore";
 
-type HookReturn = (formData: VaccineFormData) => void;
+type HookReturn = (
+  userId: string,
+  formData: VaccineFormData,
+  navigate: () => void
+) => void;
 
 export const useCreateVaccine = (): HookReturn => {
-  return (formData: VaccineFormData) => {
-    addDoc(collection(db, "vaccines"), {
+  return (userId: string, formData: VaccineFormData, navigate: () => void) => {
+    if (!userId) return;
+
+    const userVaccinesRef = collection(db, `users/${userId}/vaccines`);
+
+    addDoc(userVaccinesRef, {
       ...formData,
+      date: formData.date ? formData.date : null,
+      nextDose: formData.nextDose ? formData.nextDose : null,
       imageUrl: null,
-    }).catch((error) => {
-      alert("Error writing document: " + error);
-    });
+    })
+      .then(() => navigate())
+      .catch((error) => {
+        alert("Error writing document: " + error);
+      });
   };
 };

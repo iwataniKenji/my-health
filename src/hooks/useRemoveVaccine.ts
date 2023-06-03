@@ -1,11 +1,13 @@
 import { deleteDoc, doc } from "firebase/firestore";
 import { db } from "../firebase/config";
 
-type HookReturn = (vaccineId: string) => void;
+type HookReturn = (userId: string, vaccineId: string) => void;
 
 export const useRemoveVaccine = (): HookReturn => {
-  return async (vaccineId: string) => {
-    deleteDoc(doc(db, "vaccines", vaccineId)).catch((error) => {
+  return async (userId: string, vaccineId: string) => {
+    const userVaccinesRef = doc(db, `users/${userId}/vaccines/${vaccineId}`);
+
+    deleteDoc(userVaccinesRef).catch((error) => {
       alert("Error removing document: " + error);
     });
   };
