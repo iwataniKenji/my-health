@@ -22,10 +22,10 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app); // conecta ao módulo de autenticação
-const db = initializeFirestore(app, {
-  experimentalForceLongPolling: true,
-}); // conecta ao módulo de banco de dados
 const storage = getStorage(app); // conecta ao módulo de armazenamento
 const database = getFirestore();
+const db = initializeFirestore(app, {
+  experimentalForceLongPolling: true,
+});
 
 export { auth, db, storage, database };

@@ -6,8 +6,8 @@ import {
   Image,
 } from "react-native";
 import { colors } from "../data/theme";
-import ImagePicker from "react-native-image-picker";
 import { useState } from "react";
+import ImagePicker from "react-native-image-picker";
 
 type Props = TextInputProps & {
   label: string;
