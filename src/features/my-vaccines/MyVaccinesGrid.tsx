@@ -1,6 +1,5 @@
 import { View, FlatList } from "react-native";
 import { MyVaccineCard } from "./MyVaccineCard";
-import { useEffect } from "react";
 import { Vaccine } from "../../types/Vaccine";
 import useVaccineList from "../../hooks/useVaccineList";
 
@@ -10,11 +9,7 @@ type Props = {
 };
 
 export function MyVaccinesGrid({ stackProps, search }: Props) {
-  const { listRefresh, vaccines } = useVaccineList();
-
-  useEffect(() => {
-    listRefresh();
-  }, []);
+  const { vaccines } = useVaccineList();
 
   return (
     <View style={{ height: "70%" }}>

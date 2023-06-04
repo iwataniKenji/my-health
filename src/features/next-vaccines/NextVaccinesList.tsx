@@ -1,14 +1,9 @@
 import { FlatList, View } from "react-native";
 import { NextVaccinesCard } from "./NextVaccinesCard";
-import { useEffect } from "react";
 import useVaccineList from "../../hooks/useVaccineList";
 
 export function NextVaccinesList() {
-  const { listRefresh, vaccines } = useVaccineList();
-
-  useEffect(() => {
-    listRefresh();
-  }, []);
+  const { vaccines } = useVaccineList();
 
   return (
     <View
