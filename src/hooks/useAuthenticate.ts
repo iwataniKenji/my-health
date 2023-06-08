@@ -27,13 +27,13 @@ export const useAuthenticate = (): HookReturn => {
         getDoc(userRef).then((user) => {
           dispatch(
             reducerSetLogin({
-              id: user.data()?.id,
+              id: userLogged.user.uid as string,
               name: user.data()?.name,
             })
           );
-        });
 
-        navigate();
+          navigate();
+        });
       })
       .catch((error) => {
         setShowErrorMessage(true);
