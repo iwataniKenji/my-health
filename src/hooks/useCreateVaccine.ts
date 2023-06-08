@@ -18,11 +18,11 @@ export const useCreateVaccine = (): HookReturn => {
       ...formData,
       date: formData.date ? formData.date : null,
       nextDose: formData.nextDose ? formData.nextDose : null,
-      imageUrl: null, // TODO -> mudar para o valor correto
+      imageUrl: formData.imageUrl ? formData.imageUrl : null,
     })
       .then(() => navigate())
       .catch((error) => {
-        console.log("Error writing document: " + error);
+        console.log("Error creating vaccine: " + error);
       });
   };
 };

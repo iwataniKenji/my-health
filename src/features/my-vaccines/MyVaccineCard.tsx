@@ -3,9 +3,6 @@ import { colors } from "../../data/theme";
 import { dosesEnumToString } from "../../utils/dosesEnumToString";
 import { Doses } from "../../enums/Doses";
 
-// TODO -> corrigir passagem de imagens
-const imageEx = require("../../../assets/images/vac-example.jpeg");
-
 type Props = {
   id: string;
   title: string;
@@ -85,15 +82,9 @@ export function MyVaccineCard({
       >
         {date ? date.toLocaleDateString() : "Não há data"}
       </Text>
-      <Image
-        source={imageEx}
-        resizeMode="contain"
-        style={{
-          maxHeight: 70,
-          margin: 0,
-          padding: 0,
-        }}
-      />
+      {imageUrl ? (
+        <Image source={{ uri: imageUrl }} style={{ height: 70, width: 70 }} />
+      ) : null}
 
       <Text
         style={{

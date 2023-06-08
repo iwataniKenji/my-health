@@ -32,6 +32,7 @@ export function MyVaccinesGrid({ stackProps, search }: Props) {
               date={item.date}
               nextDose={item.nextDose}
               stackProps={stackProps}
+              imageUrl={item.imageUrl}
             />
           )}
           keyExtractor={(item) => item.id}

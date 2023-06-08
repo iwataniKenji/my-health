@@ -24,11 +24,11 @@ export const useUpdateVaccine = (): HookReturn => {
       ...formData,
       date: formData.date ? formData.date : null,
       nextDose: formData.nextDose ? formData.nextDose : null,
-      imageUrl: null, // TODO -> mudar para o valor correto
+      imageUrl: formData.imageUrl ? formData.imageUrl : null,
     })
       .then(() => navigate())
       .catch((error) => {
-        console.log("Error updating document:", error);
+        console.log("Error updating vaccine:", error);
       });
   };
 };

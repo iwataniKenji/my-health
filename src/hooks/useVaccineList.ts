@@ -31,7 +31,7 @@ const useVaccineList = (): HookReturn => {
           doses: doc.data().doses,
           date: doc.data().date ? doc.data().date.toDate() : null,
           nextDose: doc.data().nextDose ? doc.data().nextDose.toDate() : null,
-          imageUrl: doc.data().imageUrl,
+          imageUrl: doc.data().imageUrl ? doc.data().imageUrl : null,
         });
       });
 
