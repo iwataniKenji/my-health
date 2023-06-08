@@ -1,6 +1,6 @@
 import { View, Text } from "react-native";
 import { colors } from "../data/theme";
-import DatePicker from "react-native-datepicker";
+import RNDateTimePicker from "react-native-datepicker";
 
 type Props = {
   label: string;
@@ -32,7 +32,7 @@ export function CustomDatePicker({ label, value, onChange }: Props) {
         {label}
       </Text>
 
-      <DatePicker
+      <RNDateTimePicker
         style={{
           height: 40,
           marginVertical: 12,
