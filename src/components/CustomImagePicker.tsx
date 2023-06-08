@@ -7,7 +7,7 @@ import {
 } from "react-native";
 import { colors } from "../data/theme";
 import { useState } from "react";
-import ImagePicker from "react-native-image-picker";
+import * as ImagePicker from "expo-image-picker";
 
 type Props = TextInputProps & {
   label: string;
@@ -15,69 +15,74 @@ type Props = TextInputProps & {
   setValue: (value: string) => void;
 };
 
-// TODO -> integrar imagens
 export function CustomImagePicker({ label, value, setValue }: Props) {
   const [photo, setPhoto] = useState<any>(null);
 
   const captureImage = async () => {
-    try {
-      const result = await ImagePicker.launchCamera({
-        mediaType: "photo",
-        cameraType: "back",
-        quality: 1,
-      });
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.All,
+      aspect: [4, 3],
+      quality: 0.5,
+    });
 
-      console.log("result: " + result);
-    } catch (error) {
-      console.log("log", error);
+    if (result.assets) {
+      const selectedImage = result.assets[0];
+
+      setPhoto(selectedImage as any);
+      setValue(selectedImage.uri as string);
     }
   };
 
   return (
-    <View
-      style={{
-        marginTop: 10,
-        display: "flex",
-        flexDirection: "row",
-        alignItems: "center",
-        justifyContent: "center",
-        gap: 10,
-      }}
-    >
-      <Text
+    <View>
+      <View
         style={{
-          fontSize: 18,
-          color: colors.white,
-          textAlign: "right",
-          fontFamily: "averiaLibre-regular",
-        }}
-      >
-        {label}
-      </Text>
-      <TouchableOpacity
-        style={{
-          height: 35,
-          borderRadius: 2,
-          paddingHorizontal: 10,
-          backgroundColor: colors.primaryMain,
+          marginTop: 10,
           display: "flex",
+          flexDirection: "row",
+          alignItems: "center",
           justifyContent: "center",
+          gap: 10,
         }}
-        onPress={captureImage}
       >
         <Text
           style={{
+            fontSize: 18,
             color: colors.white,
-            fontSize: 14,
+            textAlign: "right",
             fontFamily: "averiaLibre-regular",
           }}
         >
-          Selecionar imagem
+          {label}
         </Text>
-      </TouchableOpacity>
-      {photo && (
-        <Image source={{ uri: value }} style={{ width: 100, height: 100 }} />
-      )}
+        <TouchableOpacity
+          style={{
+            height: 35,
+            borderRadius: 2,
+            paddingHorizontal: 10,
+            backgroundColor: colors.primaryMain,
+            display: "flex",
+            justifyContent: "center",
+          }}
+          onPress={captureImage}
+        >
+          <Text
+            style={{
+              color: colors.white,
+              fontSize: 14,
+              fontFamily: "averiaLibre-regular",
+            }}
+          >
+            Selecionar imagem
+          </Text>
+        </TouchableOpacity>
+      </View>
+      {value ? (
+        <Image
+          source={{ uri: value }}
+          style={{ width: 100, height: 100, marginLeft: 158, marginTop: 10 }}
+        />
+      ) : null}
     </View>
   );
 }
