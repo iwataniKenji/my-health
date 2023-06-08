@@ -11,10 +11,14 @@ import { useCreateVaccine } from "../../hooks/useCreateVaccine";
 import { useUpdateVaccine } from "../../hooks/useUpdateVaccine";
 import { CustomImagePicker } from "../../components/CustomImagePicker";
 import { useSelector } from "react-redux";
+import { useSaveImage } from "../../hooks/useSaveImage";
+import { useRemoveImage } from "../../hooks/useRemoveImage";
 
 export function CreateNewVaccineSection(props: any) {
   const createVaccine = useCreateVaccine();
   const updateVaccine = useUpdateVaccine();
+  const saveImage = useSaveImage();
+  const removeImage = useRemoveImage();
 
   const userId = useSelector((state: any) => state.auth.id);
 
@@ -36,26 +40,42 @@ export function CreateNewVaccineSection(props: any) {
     }
   }, []);
 
-  const handleCreateUpdateVaccine = (isEditMode: boolean) => {
+  const handleCreateUpdateVaccine = async (isEditMode: boolean) => {
     if (title === "") return alert("Preencha o campo de vacina");
 
-    if (isEditMode) {
-      updateVaccine(
-        userId,
-        props.route.params.id,
-        {
-          title,
-          date,
-          doses,
-          nextDose,
-          imageUrl,
-        },
-        () => props.navigation.pop()
-      );
-    } else {
-      createVaccine(userId, { title, date, doses, nextDose, imageUrl }, () =>
-        props.navigation.pop()
-      );
+    const oldImage = props.route.params?.imageUrl;
+    const newImage = imageUrl;
+
+    const formData = {
+      title,
+      date,
+      doses,
+      nextDose,
+      imageUrl,
+    };
+
+    try {
+      if (newImage && oldImage !== newImage) {
+        const imageIsChanged = oldImage && newImage;
+
+        if (imageIsChanged) removeImage(oldImage);
+
+        const url = await saveImage(imageUrl);
+
+        formData.imageUrl = url;
+      }
+
+      if (isEditMode) {
+        updateVaccine(userId, props.route.params.id, formData, () =>
+          props.navigation.pop()
+        );
+      } else {
+        createVaccine(userId, formData, () => props.navigation.pop());
+      }
+    } catch (error) {
+      alert("Erro ao criar/editar vacina");
+
+      console.log("Erro ao criar/editar vacina: ", error);
     }
   };
 
