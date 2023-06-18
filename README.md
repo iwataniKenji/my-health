@@ -4,7 +4,7 @@
 
 <p align="center">
     <a href="#about">📙 About</a>
-    <!-- <a href="#preview">🖼️ Preview</a> -->
+    <a href="#preview">🖼️ Preview</a>
     <a href="#start">📖 How to Start</a>
     <a href="#features">💡 Features</a>
     <a href="#technologies">💻 Technologies</a>
@@ -20,13 +20,13 @@
 In this sense, <strong>My Health</strong> aims to implement a digital vaccination portfolio to control the vaccines received, including the image of the vaccination receipt as well as the dates of the next doses.</p>
 <p>Idea and visual concept created by professor Henrique Shishido and made by <a href="https://www.linkedin.com/in/kleverson-kenji-iwatani/">Kenji Iwatani</a></p>
 
-<!-- ---
+---
 
 <H2 id="preview">🖼️ Preview</H2>
 
 <section align="center">
     <img alt="project overview" src="./assets/preview.gif" width="300"/>
-</section> -->
+</section>
 
 ---
 
@@ -61,6 +61,7 @@ $ yarn start start
 - [x] Image upload through expo-image-picker and Firebase storage
 - [x] Data persistence with Firestore database
 - [x] Organized project structure and architecture
+- [x] Full application made with typescript
 
 ---
 
