@@ -11,7 +11,7 @@
 </p>
 
 <h4 align="center">
-   🚧 My Health project in progress... 🚧
+   ✔️ My Health project finished ✔️
 </h4>
 
 <h2 id="about">📙 About</H2>
