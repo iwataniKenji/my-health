@@ -21,7 +21,11 @@ export function CustomModal({
   const handleModalConfirm = () => {
     setModalIsVisible(false);
 
-    removeVaccine(userId, stackProps.route.params.id);
+    removeVaccine(
+      userId,
+      stackProps.route.params.id,
+      stackProps.route.params.imageUrl
+    );
 
     stackProps.navigation.pop();
   };

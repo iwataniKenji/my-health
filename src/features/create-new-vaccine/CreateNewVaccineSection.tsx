@@ -10,15 +10,17 @@ import { CustomDatePicker } from "../../components/CustomDatePicker";
 import { useCreateVaccine } from "../../hooks/useCreateVaccine";
 import { useUpdateVaccine } from "../../hooks/useUpdateVaccine";
 import { CustomImagePicker } from "../../components/CustomImagePicker";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useSaveImage } from "../../hooks/useSaveImage";
 import { useRemoveImage } from "../../hooks/useRemoveImage";
+import { reducerSetFormIsLoading } from "../../redux/formIsLoadingSlice";
 
 export function CreateNewVaccineSection(props: any) {
   const createVaccine = useCreateVaccine();
   const updateVaccine = useUpdateVaccine();
   const saveImage = useSaveImage();
   const removeImage = useRemoveImage();
+  const dispatch = useDispatch();
 
   const userId = useSelector((state: any) => state.auth.id);
 
@@ -55,6 +57,8 @@ export function CreateNewVaccineSection(props: any) {
     };
 
     try {
+      dispatch(reducerSetFormIsLoading(true));
+
       if (newImage && oldImage !== newImage) {
         const imageIsChanged = oldImage && newImage;
 
@@ -76,6 +80,8 @@ export function CreateNewVaccineSection(props: any) {
       alert("Erro ao criar/editar vacina");
 
       console.log("Erro ao criar/editar vacina: ", error);
+    } finally {
+      dispatch(reducerSetFormIsLoading(false));
     }
   };
 

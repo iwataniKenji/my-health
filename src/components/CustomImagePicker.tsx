@@ -7,6 +7,8 @@ import {
 } from "react-native";
 import { colors } from "../data/theme";
 import { useState } from "react";
+import { reducerSetFormIsLoading } from "../redux/formIsLoadingSlice";
+import { useDispatch } from 'react-redux';
 import * as ImagePicker from "expo-image-picker";
 
 type Props = TextInputProps & {
@@ -16,9 +18,13 @@ type Props = TextInputProps & {
 };
 
 export function CustomImagePicker({ label, value, setValue }: Props) {
+  const dispatch = useDispatch();
+  
   const [photo, setPhoto] = useState<any>(null);
 
   const captureImage = async () => {
+    dispatch(reducerSetFormIsLoading(true));
+
     let result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.All,
       aspect: [4, 3],
@@ -31,6 +37,8 @@ export function CustomImagePicker({ label, value, setValue }: Props) {
       setPhoto(selectedImage as any);
       setValue(selectedImage.uri as string);
     }
+
+    dispatch(reducerSetFormIsLoading(false));
   };
 
   return (
