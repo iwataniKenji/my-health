@@ -12,7 +12,10 @@ export function NextVaccinesList() {
       if (!nextDose) return false;
 
       const today = new Date();
+      today.setHours(0, 0, 0, 0);
+
       const nextDoseDay = new Date(nextDose);
+      nextDoseDay.setHours(0, 0, 0, 0);
 
       return nextDoseDay >= today;
     });
