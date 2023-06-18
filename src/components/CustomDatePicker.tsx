@@ -57,12 +57,12 @@ export function CustomDatePicker({ label, value, onChange }: Props) {
             marginRight: 36,
           },
           // TODO -> remove this ios dark theme adaptation
-          datePicker: {
-            backgroundColor: "black",
-          },
-          datePickerCon: {
-            backgroundColor: "black",
-          },
+          // datePicker: {
+          //   backgroundColor: "black",
+          // },
+          // datePickerCon: {
+          //   backgroundColor: "black",
+          // },
           dateText: {
             color: colors.primaryMain,
             fontFamily: "averiaLibre-regular",

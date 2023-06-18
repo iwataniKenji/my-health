@@ -1,9 +1,12 @@
-import { useEffect, useState } from "react";
-import { Provider as PaperProvider } from "react-native-paper";
 import * as Font from "expo-font";
 import Navigation from "./src/components/navigation/Navigation";
+import { useEffect, useState } from "react";
+import { Provider as PaperProvider } from "react-native-paper";
 import { Provider } from "react-redux";
 import { store } from "./src/redux/store";
+import { LogBox } from "react-native";
+
+LogBox.ignoreAllLogs();
 
 const getFonts = () =>
   Font.loadAsync({
