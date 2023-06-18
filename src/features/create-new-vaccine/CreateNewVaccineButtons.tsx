@@ -4,6 +4,7 @@ import { CustomButton } from "../../components/CustomButton";
 import { colors } from "../../data/theme";
 import { CustomModal } from "../../components/CustomModal";
 import { DeleteButton } from "./DeleteButton";
+import { useSelector } from "react-redux";
 
 type Props = {
   stackProps: any;
@@ -16,6 +17,7 @@ export function CreateNewVaccineButtons({
 }: Props) {
   const [modalIsVisible, setModalIsVisible] = useState(false);
 
+  const formIsLoading = useSelector((state: any) => state.formIsLoading);
   const isEditMode = stackProps.route.params?.id ? true : false;
 
   const handleOpenModal = () => {
@@ -34,6 +36,7 @@ export function CreateNewVaccineButtons({
       <CustomButton
         color={colors.success}
         handleClick={() => handleCreateUpdateVaccine(isEditMode)}
+        isLoading={formIsLoading}
       >
         {isEditMode ? "Salvar alterações" : "Cadastrar"}
       </CustomButton>

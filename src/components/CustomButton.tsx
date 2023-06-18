@@ -1,13 +1,19 @@
-import { TouchableOpacity, Text } from "react-native";
+import { TouchableOpacity, Text, View, ActivityIndicator } from "react-native";
 import { colors } from "../data/theme";
 
 type Props = {
   children: string;
   color: string;
   handleClick: () => void;
+  isLoading?: boolean;
 };
 
-export function CustomButton({ children, color, handleClick }: Props) {
+export function CustomButton({
+  children,
+  color,
+  handleClick,
+  isLoading,
+}: Props) {
   return (
     <TouchableOpacity
       style={{
@@ -17,15 +23,21 @@ export function CustomButton({ children, color, handleClick }: Props) {
         backgroundColor: color,
       }}
       onPress={handleClick}
+      disabled={isLoading}
     >
-      <Text
-        style={{
-          color: colors.white,
-          fontFamily: "averiaLibre-regular",
-        }}
-      >
-        {children}
-      </Text>
+      <View style={{ display: "flex", flexDirection: "row", gap: 8 }}>
+        {isLoading && (
+          <ActivityIndicator style={{ height: 15 }} color="white" />
+        )}
+        <Text
+          style={{
+            color: colors.white,
+            fontFamily: "averiaLibre-regular",
+          }}
+        >
+          {children}
+        </Text>
+      </View>
     </TouchableOpacity>
   );
 }
